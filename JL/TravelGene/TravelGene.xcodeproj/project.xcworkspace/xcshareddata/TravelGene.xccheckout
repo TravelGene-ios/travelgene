@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>02D2389D-2878-4312-8533-1588C1E4D7EA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TravelGene</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D43D95BD-3CFC-4924-B8F0-9184665F6C02</key>
+		<string>https://github.com/lijing2441/travelGeneIOS2016.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>JL/TravelGene/TravelGene.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D43D95BD-3CFC-4924-B8F0-9184665F6C02</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lijing2441/travelGeneIOS2016.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D43D95BD-3CFC-4924-B8F0-9184665F6C02</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D43D95BD-3CFC-4924-B8F0-9184665F6C02</string>
+			<key>IDESourceControlWCCName</key>
+			<string>travelGeneIOS2016</string>
+		</dict>
+	</array>
+</dict>
+</plist>
