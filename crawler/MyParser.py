@@ -14,8 +14,8 @@ def url_open(pageUrl):
     try:
         response = urllib2.urlopen(req)
         contents= response.read()
-    except urllib2.HTTPError, Exception:
-        print Exception + ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+    except (httplib.BadStatusLine, urllib2.HTTPError, Exception):
+        print str(Exception) + ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
 
     return contents
 
@@ -61,10 +61,11 @@ def parseHotelList(url):
     # input()
     # print hotelUrl
     # print len(hotelUrl)
-    res = []
     for hotel in hotelUrl:
+        res = []
         res.append(parseHotel(hotel))
-    writeToFile(res,'Hotels')
+        writeToFile(res,'Hotels')
+
     return len(hotelUrl)
 
 
@@ -182,7 +183,7 @@ def get_ratings(element, res):
         else:
             res['rating_string']=0
 
-    except KeyError:
+    except (KeyError, AttributeError):
         res['review_count']="Unknown"
         res['rating_string']="Unknown"
 
@@ -200,6 +201,7 @@ def parseRestaurantList(url):
     m = re_action.search(url)
     restaurantList = []
     cnt = 0
+    titlelist = None
     for i in xrange(0,page_no):
         nurl = m.group(1)+'-'+m.group(2)+'-'+'oa'+(str)(i*30)+'-'+m.group(3)
         if nurl in visited_url.keys(): 
@@ -219,10 +221,16 @@ def parseRestaurantList(url):
     # print len(restaurantList)
                 #######################################################################   test
         # break
-    res = []    
+    print str(len(titlelist)) + " length &&&"
+
+    # new file
     for rest in restaurantList:
+        res = []
         res.append(parseRestaurant(rest))
-    writeToFile(res,'Restaurant')
+        # print res[0]['title'] + "asdfasdf"
+        writeToFile(res, 'Restaurant')
+    # writeToFile(res,'Restaurant')
+    print str(len(titlelist)) + " length asdasdfasdfasdfadfas"
     return len(titlelist)
 
 
@@ -241,7 +249,7 @@ def parseRestaurant(url):
     get_restaurant_openhour(soup, res)
     get_restaurant_price_range(soup, res)
     res['category'] = 'restaurant'
-
+    # print "title " + res['title']
     # get_restuarant_img(soup, res)
     return res
 
@@ -296,6 +304,7 @@ def parseAttractionList(url):
     print page_no
     m = re_action.search(url)
     attractionList = []
+    titlelist = None
     attraction_re = re.compile(r"Attraction_Review(.*)")
     for i in xrange(0,page_no):
         nurl = m.group(1)+'-'+m.group(2)+'-'+'oa'+(str)(i*30)+'-'+m.group(3)
@@ -316,12 +325,14 @@ def parseAttractionList(url):
         for title in titlelist:
             attractionList.append(root+title.find("a")['href'])
     
-    print attractionList
-    print len(attractionList)
-    res = []
+        print " &&& attractionList length " + str(len(attractionList))
+
+
     for attraction in attractionList:
+        res = []
         res.append(parseAttraction(attraction))
-    writeToFile(res,"Attractions")
+        writeToFile(res,"Attractions")
+
     return len(titlelist)
 
 def parseAttraction(url):
@@ -333,7 +344,9 @@ def parseAttraction(url):
     get_attraction_address(soup,res)
     get_reviews(soup,res)
     get_ratings(soup,res)
-    res['category'] = 'spot';
+    res['category'] = 'spot'
+    # print "title  " + res['title']
+    print url
     return res
 
 def get_attraction_address(element,res):
@@ -349,7 +362,7 @@ def get_attraction_address(element,res):
 def writeToFile(res,catagory):
     filename = catagory+"_out.json"
     print filename + "       &&&&&&&&&&&&&&&&&"
-    f = open(filename, "w")
+    f = open(filename, "a")
     for item in res:
        f.write(str(item)+'\n')
     f.close()
@@ -359,7 +372,8 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g53449-Pittsburgh_Pennsylvania-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g60878-Seattle_Washington-Vacations.html"
+    #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
     urlqueue=[]
@@ -388,12 +402,12 @@ if __name__ == "__main__":
     #     if parseHotelList(urlqueue[0])!=0:
     #         break
     #     print 'try again'
-
-    print urlqueue[2]
-    while True:
-        if parseAttractionList(urlqueue[2])!=0:
-            break
-        print 'try again'
+    #
+    # print urlqueue[2]
+    # while True:
+    #     if parseAttractionList(urlqueue[2]):
+    #         break
+    #     print 'try again'
     # while True:
     #     if parseRestaurantList(urlqueue[3]):
     #         break
