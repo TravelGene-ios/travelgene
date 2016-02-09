@@ -31,7 +31,7 @@ def dump_url(url):
 
 def get_title(element, res):
     title = element.find("h1")
-    res["title"] = unicode(title.text).strip()
+    res["title"] = str(title.text.strip().encode('utf-8'))
 
 def parseHotelList(url):
     dump_url(url)
@@ -100,11 +100,11 @@ def get_hotel_img(element, res):
         img_div=element.find("div", attrs={"id":"HR_HACKATHON_CONTENT"})
         img_url_obj=img_div.find("img",attrs={"class":"sizedThumb_thumbnail"})
         if img_url_obj:
-            img_url = img_url_obj["src"]
+            img_url = str(img_url_obj["src"])
         else:
             img_url_container=img_div.find("div",attrs={"class":"sizedThumb_container"})
             if img_url_container:
-                img_url = img_url_container.find("img")["src"]
+                img_url = str(img_url_container.find("img")["src"])
         print img_url
     else:
         img_div=element.find("div",attrs={"id":"BC_PHOTOS"})
@@ -115,9 +115,9 @@ def get_hotel_img(element, res):
             if img_span.find("img")['src']== None:
                 pass
             else:
-                img_url=img_span.find("img")['src']
+                img_url=str(img_span.find("img")['src'])
                 print img_url
-    res['img_url']=img_url #changed
+    res['img_url']=str(img_url) #changed
 
 def get_hotel_address(element, res):
     info = element.find("div",attrs={"class":"header_contact_info"})
@@ -127,7 +127,7 @@ def get_hotel_address(element, res):
     address = ""
     for part in info.find_all("span",attrs={"class":"format_address"}):
         address += part.text
-    res['address'] = address.strip()
+    res['address'] = str(address.strip())
 
 def get_hotel_class(element, res):
     try:
@@ -136,7 +136,7 @@ def get_hotel_class(element, res):
             score_alt = class_img_div['alt']
             hotel_class = score_alt.split(" ")[0]
             if hotel_class:
-                res['class'] = hotel_class
+                res['class'] = str(hotel_class)
     except (AttributeError):
         res['class'] = "Unknown"
 #using scrapy could crawl the description data
@@ -160,7 +160,7 @@ def get_reviews(element, res):
         for r in reviews:
             ret = r.find("p",attrs={"class":"partial_entry"})
             if ret != None:
-                d = unicode(ret.text).strip()
+                d = str(ret.text.encode('utf-8'))
                 reviewlist.append(d)
         res['review_list']=reviewlist
             # print reviewlist
@@ -173,13 +173,13 @@ def get_ratings(element, res):
         cnt=rating_div.find("a")
         rate=rating_div.find("img")
         if 'content' in cnt.attrs:
-            res['review_count']=cnt["content"]
+            res['review_count']=str(cnt["content"])
             # cnt.attrs.get('content', 'Unknown')
         else:
             res['review_count']=0
 
         if 'content' in rate.attrs:
-            res['rating_string']=rate["content"]
+            res['rating_string']=str(rate["content"])
         else:
             res['rating_string']=0
 
@@ -265,15 +265,15 @@ def get_restaurant_openhour(element, res):
 def get_restaurant_address(element,res):
     address = ""
     address = element.find("address").find("span").text
-    res['address'] = address.strip()
+    res['address'] = str(address.strip())
 
 def get_restuarant_img(element, res):
     img_url=""
     img_div=element.find("div",attrs={"class":"flexible_photos"})
-    print img_div
+    # print img_div
     img_url=img_div.find("img",attrs={"id":"HERO_PHOTO"})['src']
     print img_url
-    res['img_url']=img_url
+    res['img_url']=str(img_url)
 
 def get_restaurant_price_range(element, res):
     try:
@@ -344,7 +344,7 @@ def parseAttraction(url):
     get_attraction_address(soup,res)
     get_reviews(soup,res)
     get_ratings(soup,res)
-    res['category'] = 'spot'
+    res['category'] = "spot"
     # print "title  " + res['title']
     print url
     return res
@@ -355,7 +355,7 @@ def get_attraction_address(element,res):
         ad = ad.text
         action_re = re.compile(r"Address:(.*)")
         m = action_re.search(ad)
-        res['address']=m.group(1).strip()
+        res['address']=str(m.group(1).strip().encode('utf-8'))
     except (AttributeError):
         res['address'] = "Unknown"
 
@@ -363,8 +363,12 @@ def writeToFile(res,catagory):
     filename = catagory+"_out.json"
     print filename + "       &&&&&&&&&&&&&&&&&"
     f = open(filename, "a")
-    for item in res:
-       f.write(str(item)+'\n')
+
+    json.dump(res, f)
+    f.write("\n")
+    print "a"
+    # for item in res:
+    #    f.write(str(item)+'\n')
     f.close()
 
 root="http://www.tripadvisor.com"
@@ -372,7 +376,7 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g60878-Seattle_Washington-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
@@ -398,18 +402,18 @@ if __name__ == "__main__":
         # soup = dump_url(page)
         # parse_page(soup)
 
-    # while True:
-    #     if parseHotelList(urlqueue[0])!=0:
-    #         break
-    #     print 'try again'
+    while True:
+        if parseHotelList(urlqueue[0])!=0:
+            break
+        print 'try again'
     #
     # print urlqueue[2]
-    # while True:
-    #     if parseAttractionList(urlqueue[2]):
-    #         break
-    #     print 'try again'
-    # while True:
-    #     if parseRestaurantList(urlqueue[3]):
-    #         break
-    #     print 'try again'
+
+    # parseAttractionList(urlqueue[2])
+
+
+    while True:
+        if parseRestaurantList(urlqueue[3]):
+            break
+        print 'try again'
 
