@@ -31,7 +31,10 @@ def dump_url(url):
 
 def get_title(element, res):
     title = element.find("h1")
-    res["title"] = str(title.text.strip().encode('utf-8'))
+    if title:
+        res["title"] = str(title.text.strip().encode('utf-8'))
+    else:
+        res["title"] = "Unknown"
 
 def parseHotelList(url):
     dump_url(url)
@@ -376,7 +379,7 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
+    root_url="https://www.tripadvisor.com/Tourism-g53449-Pittsburgh_Pennsylvania-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
@@ -402,10 +405,10 @@ if __name__ == "__main__":
         # soup = dump_url(page)
         # parse_page(soup)
 
-    while True:
-        if parseHotelList(urlqueue[0])!=0:
-            break
-        print 'try again'
+    # while True:
+        # if parseHotelList(urlqueue[0])!=0:
+        #     break
+        # print 'try again'
     #
     # print urlqueue[2]
 
