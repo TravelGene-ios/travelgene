@@ -15,12 +15,10 @@ def url_open(pageUrl):
         response = urllib2.urlopen(req)
         contents= response.read()
     except (httplib.BadStatusLine, urllib2.HTTPError, Exception):
-        print str(Exception) + ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-
+        print str(Exception) + '---OpenUrlError---'
     return contents
 
 def dump_url(url):
-    # print "xxxxx", url
     content = url_open(url)
     fname = "html/" + url.split("/")[-1]
     f = open(fname, "w+")
@@ -35,23 +33,6 @@ def get_title(element, res):
     else:
         res["title"] = "Unknown"
 
-def get_hotel_class(element, res):
-    try:
-        class_img_div = element.find("img",attrs={"class":"sprite-rating_cl_gry_fill rating_cl_gry_fill cl_gry30"})
-        if class_img_div:
-            score_alt = class_img_div['alt']
-            hotel_class = score_alt.split(" ")[0]
-            if hotel_class:
-                res['class'] = str(hotel_class)
-    except (AttributeError):
-        res['class'] = "Unknown"
-#using scrapy could crawl the description data
-def get_description(element, res):
-    descp = element.find("div",attrs={"id":"BODYCON"}).find("div",attrs={"class":"answers_in_head"})
-    print descp
-    print "@@@@@@@@@@@@@1"
-
-
 def get_reviews(element, res):
     try:
         reviewlist=[]
@@ -63,7 +44,6 @@ def get_reviews(element, res):
                 d = str(ret.text.encode('utf-8'))
                 reviewlist.append(d)
         res['review_list']=reviewlist
-            # print reviewlist
     except (AttributeError):
         res['review_list']=[]
 
@@ -74,7 +54,6 @@ def get_ratings(element, res):
         rate=rating_div.find("img")
         if 'content' in cnt.attrs:
             res['review_count']=str(cnt["content"])
-            # cnt.attrs.get('content', 'Unknown')
         else:
             res['review_count']=0
 
@@ -103,7 +82,6 @@ def get_restaurant_address(element,res):
 def get_restuarant_img(element, res):
     img_url=""
     img_div=element.find("div",attrs={"class":"flexible_photos"})
-    # print img_div
     img_url=img_div.find("img",attrs={"id":"HERO_PHOTO"})['src']
     print img_url
     res['img_url']=str(img_url)
@@ -147,37 +125,27 @@ def getRest(jsonName):
         res.append(parseRestaurant(line))
         writeToFile2(res,jsonName+"out")
 
-
-
-def writeList(li,catagory):
-    filename = catagory+"_List.json"
-    print filename + "       is a list"
-    f = open(filename, "w")
-    for item in li:
-       f.write(str(item)+'\n')
-    f.close()
-
 def openFile(catagory):
     filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
+    print "Open File:" + filename
     f = open(filename, "a")
     return f
+
 def writeToFile(res,f):
     json.dump(res, f)
     f.write("\n")
-    print "a"
-
+    print "writeToFileDone"
+    
 def closeFile(f):
     f.close()
-def writeToFile2(res,catagory):
-    filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
-    f = open(filename, "a")
 
+def writeToFile2ß(res,catagory):
+    filename = catagory+"_out.json"
+    print "WriteToFile" + filename
+    f = open(filename, "a")
     json.dump(res, f)
     f.write("\n")
     print "a"
-
     f.close()
 
 if __name__ == "__main__":

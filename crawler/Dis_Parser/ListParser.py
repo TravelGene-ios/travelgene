@@ -192,38 +192,6 @@ def writeList(li,catagory):
        f.write(str(item)+'\n')
     f.close()
 
-def openFile(catagory):
-    filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
-    f = open(filename, "a")
-    return f
-def writeToFile(res,f):
-    
-
-    json.dump(res, f)
-    f.write("\n")
-    print "a"
-    # for item in res:
-    #    f.write(str(item)+'\n')
-    
-def closeFile(f):
-    f.close()
-
-
-
-def writeToFile2(res,catagory):
-    filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
-    f = open(filename, "a")
-
-    json.dump(res, f)
-    f.write("\n")
-    print "a"
-    # for item in res:
-    #    f.write(str(item)+'\n')
-    f.close()
-
-
 if __name__ == "__main__":
     #root_url="https://www.tripadvisor.com/Tourism-g60750-San_Diego_California-Vacations.html"
     #root_url="https://www.tripadvisor.com/Tourism-g32847-Palm_Springs_California-Vacations.html"

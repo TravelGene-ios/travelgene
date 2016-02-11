@@ -15,12 +15,10 @@ def url_open(pageUrl):
         response = urllib2.urlopen(req)
         contents= response.read()
     except (httplib.BadStatusLine, urllib2.HTTPError, Exception):
-        print str(Exception) + ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-
+        print str(Exception) + '---OpenUrlError---'
     return contents
 
 def dump_url(url):
-    # print "xxxxx", url
     content = url_open(url)
     fname = "html/" + url.split("/")[-1]
     f = open(fname, "w+")
@@ -28,13 +26,13 @@ def dump_url(url):
     f.close()
     return BeautifulSoup(content)
 
-
 def get_title(element, res):
     title = element.find("h1")
     if title:
         res["title"] = str(title.text.strip().encode('utf-8'))
     else:
         res["title"] = "Unknown"
+
 def get_reviews(element, res):
     try:
         reviewlist=[]
@@ -46,9 +44,9 @@ def get_reviews(element, res):
                 d = str(ret.text.encode('utf-8'))
                 reviewlist.append(d)
         res['review_list']=reviewlist
-            # print reviewlist
     except (AttributeError):
         res['review_list']=[]
+
 def get_ratings(element, res):
     try:    
         rating_div=element.find("div",attrs={"class":"rs rating"})
@@ -56,7 +54,6 @@ def get_ratings(element, res):
         rate=rating_div.find("img")
         if 'content' in cnt.attrs:
             res['review_count']=str(cnt["content"])
-            # cnt.attrs.get('content', 'Unknown')
         else:
             res['review_count']=0
 
@@ -73,7 +70,7 @@ def getAttraction():
     i = 1
     res = []
     for line in open('Attractions_List.json').xreadlines():
-        print i,"++++",line
+        print "Processing:"i,"Size of the List:",line
         i = i + 1
         res.append(parseAttraction(line))
         writeToFile2(res,"Attractions")
@@ -100,30 +97,24 @@ def get_attraction_address(element,res):
         res['address']=str(m.group(1).strip().encode('utf-8'))
     except (AttributeError):
         res['address'] = "Unknown"
-def writeList(li,catagory):
-    filename = catagory+"_List.json"
-    print filename + "       is a list"
-    f = open(filename, "w")
-    for item in li:
-       f.write(str(item)+'\n')
-    f.close()
 
 def openFile(catagory):
     filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
+    print "Open File:" + filename
     f = open(filename, "a")
     return f
+
 def writeToFile(res,f):
     json.dump(res, f)
     f.write("\n")
-    print "a"
+    print "writeToFileDone"
     
 def closeFile(f):
     f.close()
 
-def writeToFile2(res,catagory):
+def writeToFile2ß(res,catagory):
     filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
+    print "WriteToFile" + filename
     f = open(filename, "a")
     json.dump(res, f)
     f.write("\n")
