@@ -15,12 +15,10 @@ def url_open(pageUrl):
         response = urllib2.urlopen(req)
         contents= response.read()
     except (httplib.BadStatusLine, urllib2.HTTPError, Exception):
-        print str(Exception) + ' %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
-
+        print str(Exception) + '---OpenUrlError---'
     return contents
 
 def dump_url(url):
-    # print "xxxxx", url
     content = url_open(url)
     fname = "html/" + url.split("/")[-1]
     f = open(fname, "w+")
@@ -43,10 +41,8 @@ def parseHotelList(url):
     soup = BeautifulSoup(html, "html5lib")
     re_action = re.compile(r"(.*)-(.*)-(.*).*")
     page_no = get_last_page_no(soup)
-    # print page_no
     m = re_action.search(url)
     hotelUrl = []
-    print page_no
     for i in xrange(0,page_no):
         print i,"aa",page_no
         nurl = m.group(1)+'-'+m.group(2)+'-'+'oa'+(str)(i*30)+'-'+m.group(3)
