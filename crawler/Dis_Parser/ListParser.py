@@ -1,3 +1,8 @@
+
+'''
+Web crawler for TripAdvisor
+'''
+
 from bs4 import BeautifulSoup
 import re
 import json
@@ -26,7 +31,6 @@ def dump_url(url):
     f.close()
     return BeautifulSoup(content)
 
-
 def get_title(element, res):
     title = element.find("h1")
     if title:
@@ -52,38 +56,21 @@ def parseHotelList(url):
         html = url_open(nurl)
         soup = BeautifulSoup(html, "html5lib")
         dump_url(nurl)
-        print "xxxxx", url
+        print "Processing Hotel URL : ", url
         titlelist = soup.find_all('div',attrs={"class":"listing_title"})
         for title in titlelist:
             if title.find('a'):
                 t = title.find('a')['href']
                 hotelUrl.append(root+t)
-    # input()
-    # print hotelUrl
-    # print len(hotelUrl)
     writeList(hotelUrl,"Hotels")
-    '''
-    for hotel in hotelUrl:
-        res = []
-        res.append(parseHotel(hotel))
-        writeToFile(res,'Hotels')
-    '''
     return len(hotelUrl)
 
-
-
-
-
-
 def parseRestaurantList(url):
-    # dump_url(url)
-    print "aa"
     visited_url={}
     html = url_open(url)
     soup = BeautifulSoup(html, "html5lib")
     re_action = re.compile(r"(.*)-(.*)-(.*).*")
     page_no = get_last_page_no(soup)
-    # print page_no
     m = re_action.search(url)
     restaurantList = []
     cnt = 0
@@ -96,29 +83,14 @@ def parseRestaurantList(url):
         visited_url[nurl]=1
         html = url_open(nurl)
         soup = BeautifulSoup(html, "html5lib")
-        # dump_url(nurl)
         titlelist = soup.find_all('div',attrs={"class":"listing"})
         for r in titlelist:
             if r.find('a',attrs={"class":"property_title"}):
                 t = r.find('a')['href']
                 restaurantList.append(root+t)
-                # print cnt
                 cnt += 1
-    # print restaurantList
-    # print len(restaurantList)
-                #######################################################################   test
-        # break
     print str(len(titlelist)) + " length &&&"
-
-    # new file
     writeList(restaurantList,"Restaurants")
-    for rest in restaurantList:
-        res = []
-        res.append(parseRestaurant(rest))
-        # print res[0]['title'] + "asdfasdf"
-        writeToFile(res, 'Restaurant')
-    # writeToFile(res,'Restaurant')
-    print str(len(titlelist)) + " length asdasdfasdfasdfadfas"
     return len(titlelist)
 
 
@@ -161,26 +133,11 @@ def parseAttractionList(url):
         titlelist = soup.find_all('div',attrs={"class":"child_attraction"})
         for title in titlelist:
             attractionList.append(root+title.find("a")['href'])
-        print " &&& attractionList length " + str(len(attractionList))
-
-    i = 0
-    listLen = len(attractionList)
+        print " AttractionList length is " + str(len(attractionList))
     writeList(attractionList,"Attractions")
-    #f = openFile("Attractions")
-    '''
-    for attraction in attractionList:
-        i = i + 1
-        print "current processing:", i , "/", listLen
-        res = []
-        res.append(parseAttraction(attraction))
-        writeToFile2(res,f)
-    #closeFile(f)
-    '''
     return len(titlelist)
 
 def writeList(li,catagory):
-    i = 0
-
     filename = catagory+"_List.json"
     print filename + "       is a list"
     f = open(filename, "w")
@@ -189,12 +146,8 @@ def writeList(li,catagory):
     f.close()
 
 if __name__ == "__main__":
-    #root_url="https://www.tripadvisor.com/Tourism-g60750-San_Diego_California-Vacations.html"
-    #root_url="https://www.tripadvisor.com/Tourism-g32847-Palm_Springs_California-Vacations.html"
+
     root_url="https://www.tripadvisor.com/Tourism-g60864-New_Orleans_Louisiana-Vacations.html"
-    #root_url = "https://www.tripadvisor.com/Tourism-g45963-Las_Vegas_Nevada-Vacations.html"
-    #root_url="https://www.tripadvisor.com/Tourism-g54171-Charleston_South_Carolina-Vacations.html"
-    #root_url="https://www.tripadvisor.com/Tourism-g35805-Chicago_Illinois-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
     urlqueue=[]
@@ -202,7 +155,6 @@ if __name__ == "__main__":
     root_soup = BeautifulSoup(root_html)
     soup = dump_url(root_url)
     navLinks = soup.find('div',attrs={"class":"navLinks"})
-    # print navLinks
     for cat in navLinks.find_all('li'):
         if cat.find('a'):
             t = cat.find('a')['href']

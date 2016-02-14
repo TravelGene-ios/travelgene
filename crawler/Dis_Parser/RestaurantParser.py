@@ -1,3 +1,8 @@
+'''
+Web crawler for TripAdvisor
+'''
+
+
 from bs4 import BeautifulSoup
 import re
 import json
@@ -115,18 +120,24 @@ def parseRestaurant(url):
     get_restuarant_img(soup, res)
     return res
 
-
 def getRest(jsonName):
     i = 1
     res = []
+    j = 1
+    var f = openFile("Restaurant",j)
     for line in open(jsonName).xreadlines():
         print i,"++++",line
         i = i + 1
+        if i % 200 == 0:
+            closeFile(f)
+            j = j + 1
+            f = openFile("Restaurant",j)
         res.append(parseRestaurant(line))
-        writeToFile2(res,jsonName+"out")
+        writeToFile(res,f)
+    closeFile(f)
 
-def openFile(catagory):
-    filename = catagory+"_out.json"
+def openFile(catagory, j):
+    filename = catagory+str(j)+"_out.json"
     print "Open File:" + filename
     f = open(filename, "a")
     return f
@@ -134,20 +145,12 @@ def openFile(catagory):
 def writeToFile(res,f):
     json.dump(res, f)
     f.write("\n")
-    print "writeToFileDone"
+    print "writing ToFile"
     
 def closeFile(f):
     f.close()
 
-def writeToFile2ß(res,catagory):
-    filename = catagory+"_out.json"
-    print "WriteToFile" + filename
-    f = open(filename, "a")
-    json.dump(res, f)
-    f.write("\n")
-    print "a"
-    f.close()
-
 if __name__ == "__main__":
+    #parameter is the name of file part of the restaurant list
     name = sys.argv[1]
     getRest(name)

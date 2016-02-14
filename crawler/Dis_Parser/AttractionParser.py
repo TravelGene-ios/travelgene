@@ -1,3 +1,8 @@
+
+'''
+Web crawler for TripAdvisor
+'''
+
 from bs4 import BeautifulSoup
 import re
 import json
@@ -69,9 +74,15 @@ def get_ratings(element, res):
 def getAttraction():
     i = 1
     res = []
+    j = 1
+    var f = openFile("Attraction",j)
     for line in open('Attractions_List.json').xreadlines():
         print "Processing:"i,"Size of the List:",line
         i = i + 1
+        if i % 200 == 0:
+            closeFile(f)
+            j = j + 1
+            f = openFile("Restaurant",j)
         res.append(parseAttraction(line))
         writeToFile2(res,"Attractions")
 
@@ -98,8 +109,8 @@ def get_attraction_address(element,res):
     except (AttributeError):
         res['address'] = "Unknown"
 
-def openFile(catagory):
-    filename = catagory+"_out.json"
+def openFile(catagory, j):
+    filename = catagory+str(j)+"_out.json"
     print "Open File:" + filename
     f = open(filename, "a")
     return f
@@ -107,20 +118,10 @@ def openFile(catagory):
 def writeToFile(res,f):
     json.dump(res, f)
     f.write("\n")
-    print "writeToFileDone"
+    print "writing ToFile"
     
 def closeFile(f):
     f.close()
-
-def writeToFile2ß(res,catagory):
-    filename = catagory+"_out.json"
-    print "WriteToFile" + filename
-    f = open(filename, "a")
-    json.dump(res, f)
-    f.write("\n")
-    print "a"
-    f.close()
-
 
 if __name__ == "__main__":
     getAttraction()

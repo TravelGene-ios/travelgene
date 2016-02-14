@@ -1,3 +1,8 @@
+'''
+Web crawler for TripAdvisor
+'''
+
+
 from bs4 import BeautifulSoup
 import re
 import json
@@ -130,14 +135,21 @@ def get_ratings(element, res):
 def getHotel():
     i = 1
     res = []
+    j = 1
+    var f = openFile("Hotel",j)
     for line in open('Hotels_List.json').xreadlines():
         print i,"++++",line
         i = i + 1
+        if i % 200 == 0:
+            closeFile(f)
+            j = j + 1
+            f = openFile("Restaurant",j)
         res.append(parseHotel(line))
-        writeToFile2(res,"Hotels")
+        writeToFile(res,f)
+    closeFile(f)
 
-def openFile(catagory):
-    filename = catagory+"_out.json"
+def openFile(catagory, j):
+    filename = catagory+str(j)+"_out.json"
     print "Open File:" + filename
     f = open(filename, "a")
     return f
@@ -149,16 +161,6 @@ def writeToFile(res,f):
     
 def closeFile(f):
     f.close()
-
-def writeToFile2ß(res,catagory):
-    filename = catagory+"_out.json"
-    print "WriteToFile" + filename
-    f = open(filename, "a")
-    json.dump(res, f)
-    f.write("\n")
-    print "a"
-    f.close()
-
 
 if __name__ == "__main__":
     getHotel()
