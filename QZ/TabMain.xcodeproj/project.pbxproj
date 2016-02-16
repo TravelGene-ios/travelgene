@@ -10,7 +10,6 @@
 		5C539F0B1C6ABA1B00D78977 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F0A1C6ABA1B00D78977 /* main.m */; };
 		5C539F0E1C6ABA1B00D78977 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F0D1C6ABA1B00D78977 /* AppDelegate.m */; };
 		5C539F111C6ABA1B00D78977 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F101C6ABA1B00D78977 /* FirstViewController.m */; };
-		5C539F141C6ABA1B00D78977 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F131C6ABA1B00D78977 /* SecondViewController.m */; };
 		5C539F171C6ABA1B00D78977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C539F151C6ABA1B00D78977 /* Main.storyboard */; };
 		5C539F191C6ABA1B00D78977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C539F181C6ABA1B00D78977 /* Assets.xcassets */; };
 		5C539F1C1C6ABA1B00D78977 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C539F1A1C6ABA1B00D78977 /* LaunchScreen.storyboard */; };
@@ -19,6 +18,7 @@
 		5C539F4F1C6AC28000D78977 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F4E1C6AC28000D78977 /* TableViewController.m */; };
 		5C539F511C6AC2BB00D78977 /* _Images in Resources */ = {isa = PBXBuildFile; fileRef = 5C539F501C6AC2BB00D78977 /* _Images */; };
 		5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F551C6AD82E00D78977 /* TripDetailViewController.m */; };
+		5C8989991C7286B300415618 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8989981C7286B300415618 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,6 @@
 		5C539F0D1C6ABA1B00D78977 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5C539F0F1C6ABA1B00D78977 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		5C539F101C6ABA1B00D78977 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		5C539F121C6ABA1B00D78977 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		5C539F131C6ABA1B00D78977 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		5C539F161C6ABA1B00D78977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C539F181C6ABA1B00D78977 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C539F1B1C6ABA1B00D78977 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +60,8 @@
 		5C539F501C6AC2BB00D78977 /* _Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _Images; sourceTree = "<group>"; };
 		5C539F541C6AD82E00D78977 /* TripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailViewController.h; sourceTree = "<group>"; };
 		5C539F551C6AD82E00D78977 /* TripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDetailViewController.m; sourceTree = "<group>"; };
+		5C8989971C7286B300415618 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		5C8989981C7286B300415618 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,14 +113,14 @@
 		5C539F081C6ABA1B00D78977 /* TabMain */ = {
 			isa = PBXGroup;
 			children = (
+				5C8989971C7286B300415618 /* ProfileViewController.h */,
+				5C8989981C7286B300415618 /* ProfileViewController.m */,
 				5C539F4D1C6AC28000D78977 /* TableViewController.h */,
 				5C539F4E1C6AC28000D78977 /* TableViewController.m */,
 				5C539F0C1C6ABA1B00D78977 /* AppDelegate.h */,
 				5C539F0D1C6ABA1B00D78977 /* AppDelegate.m */,
 				5C539F0F1C6ABA1B00D78977 /* FirstViewController.h */,
 				5C539F101C6ABA1B00D78977 /* FirstViewController.m */,
-				5C539F121C6ABA1B00D78977 /* SecondViewController.h */,
-				5C539F131C6ABA1B00D78977 /* SecondViewController.m */,
 				5C539F151C6ABA1B00D78977 /* Main.storyboard */,
 				5C539F541C6AD82E00D78977 /* TripDetailViewController.h */,
 				5C539F551C6AD82E00D78977 /* TripDetailViewController.m */,
@@ -289,11 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C539F141C6ABA1B00D78977 /* SecondViewController.m in Sources */,
 				5C539F0E1C6ABA1B00D78977 /* AppDelegate.m in Sources */,
 				5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */,
 				5C539F111C6ABA1B00D78977 /* FirstViewController.m in Sources */,
 				5C539F4F1C6AC28000D78977 /* TableViewController.m in Sources */,
+				5C8989991C7286B300415618 /* ProfileViewController.m in Sources */,
 				5C539F0B1C6ABA1B00D78977 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +520,7 @@
 				5C539F381C6ABA1B00D78977 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C539F391C6ABA1B00D78977 /* Build configuration list for PBXNativeTarget "TabMainTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +529,7 @@
 				5C539F3B1C6ABA1B00D78977 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5C539F3C1C6ABA1B00D78977 /* Build configuration list for PBXNativeTarget "TabMainUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +538,7 @@
 				5C539F3E1C6ABA1B00D78977 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -25,6 +25,7 @@
 //@synthesize tableView;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Called here\n");
     return recordNum;
 }
 
