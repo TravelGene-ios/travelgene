@@ -19,10 +19,10 @@ db.on('error', function(error) {
 
 console.log('DB Connected');
 var newyorkSchema = new mongoose.Schema({
-    category    : {type : String},
-    review_count      : {type : String},
-    title      : {type : String},
-    rating_string      : {type : String}
+    category       : {type : String},
+    review_count   : {type : String},
+    title          : {type : String},
+    rating_string  : {type : String}
 
 });
 
