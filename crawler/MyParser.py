@@ -64,11 +64,13 @@ def parseHotelList(url):
     # input()
     # print hotelUrl
     # print len(hotelUrl)
+    filename = "Hotels_out.json"
+    f = open(filename, "a")
     for hotel in hotelUrl:
         res = []
         res.append(parseHotel(hotel))
-        writeToFile(res,'Hotels')
-
+        writeToFile(res, filename, f)
+    f.close()
     return len(hotelUrl)
 
 
@@ -88,7 +90,7 @@ def parseHotel(url):
     # print url
     get_hotel_img(soup, res)
     get_hotel_class(soup, res)
-    res['category'] = 'hotel';
+    res['category'] = 'hotel'
     # get_location(soup)
     # get_img_url(soup)
     # get_open_hour(soup)
@@ -105,9 +107,12 @@ def get_hotel_img(element, res):
         if img_url_obj:
             img_url = str(img_url_obj["src"])
         else:
-            img_url_container=img_div.find("div",attrs={"class":"sizedThumb_container"})
-            if img_url_container:
-                img_url = str(img_url_container.find("img")["src"])
+            if img_div:
+                img_url_container=img_div.find("div",attrs={"class":"sizedThumb_container"})
+                if img_url_container:
+                    img_url = str(img_url_container.find("img")["src"])
+            else:
+                img_url = ""
         print img_url
     else:
         img_div=element.find("div",attrs={"id":"BC_PHOTOS"})
@@ -130,7 +135,8 @@ def get_hotel_address(element, res):
     address = ""
     for part in info.find_all("span",attrs={"class":"format_address"}):
         address += part.text
-    res['address'] = str(address.strip())
+
+    res['address'] = str(address.strip().encode('utf-8'))
 
 def get_hotel_class(element, res):
     try:
@@ -227,12 +233,15 @@ def parseRestaurantList(url):
     print str(len(titlelist)) + " length &&&"
 
     # new file
+    filename = "Restaurant_out.json"
+    f = open(filename, "a")
     for rest in restaurantList:
         res = []
         res.append(parseRestaurant(rest))
         # print res[0]['title'] + "asdfasdf"
-        writeToFile(res, 'Restaurant')
+        writeToFile(res, filename, f)
     # writeToFile(res,'Restaurant')
+    f.close()
     print str(len(titlelist)) + " length asdasdfasdfasdfadfas"
     return len(titlelist)
 
@@ -253,7 +262,7 @@ def parseRestaurant(url):
     get_restaurant_price_range(soup, res)
     res['category'] = 'restaurant'
     # print "title " + res['title']
-    # get_restuarant_img(soup, res)
+    get_restuarant_img(soup, res)
     return res
 
 def get_restaurant_openhour(element, res):
@@ -266,15 +275,25 @@ def get_restaurant_openhour(element, res):
     res["open_hour"]=open_div
 
 def get_restaurant_address(element,res):
-    address = ""
-    address = element.find("address").find("span").text
-    res['address'] = str(address.strip())
+    res['address'] = "Unknown"
+    address = element.find("address")
+    if address:
+        address_info = element.find("address").find("span").text
+        if address_info:
+            res['address'] = str(address_info.strip().encode('utf-8'))
+
+
 
 def get_restuarant_img(element, res):
-    img_url=""
+    img_url="Unknown"
     img_div=element.find("div",attrs={"class":"flexible_photos"})
     # print img_div
-    img_url=img_div.find("img",attrs={"id":"HERO_PHOTO"})['src']
+    if img_div:
+        img_div_s=img_div.find("img",attrs={"id":"HERO_PHOTO"})
+        if img_div_s:
+            img_url = img_div_s['src']
+
+
     print img_url
     res['img_url']=str(img_url)
 
@@ -330,12 +349,13 @@ def parseAttractionList(url):
     
         print " &&& attractionList length " + str(len(attractionList))
 
-
+    filename = "Attractions_out.json"
+    f = open(filename, "a")
     for attraction in attractionList:
         res = []
         res.append(parseAttraction(attraction))
-        writeToFile(res,"Attractions")
-
+        writeToFile(res, filename, f)
+    f.close()
     return len(titlelist)
 
 def parseAttraction(url):
@@ -362,24 +382,32 @@ def get_attraction_address(element,res):
     except (AttributeError):
         res['address'] = "Unknown"
 
-def writeToFile(res,catagory):
-    filename = catagory+"_out.json"
-    print filename + "       &&&&&&&&&&&&&&&&&"
-    f = open(filename, "a")
+def get_attraction_img(element, res):
+    img_url=""
+    img_div=element.find("div",attrs={"class":"flexible_photos"})
+    # print img_div
+    if img_div:
+        img_url=img_div.find("img",attrs={"id":"HERO_PHOTO"})['src']
+        print img_url
+    else:
+        img_url = "Unknown"
+    res['img_url']=str(img_url)
 
+def writeToFile(res, filename, f):
+
+    print filename + "       &&&&&&&&&&&&&&&&&"
     json.dump(res, f)
     f.write("\n")
     print "a"
     # for item in res:
     #    f.write(str(item)+'\n')
-    f.close()
 
 root="http://www.tripadvisor.com"
 if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="https://www.tripadvisor.com/Tourism-g53449-Pittsburgh_Pennsylvania-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g28970-Washington_DC_District_of_Columbia-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
@@ -405,14 +433,14 @@ if __name__ == "__main__":
         # soup = dump_url(page)
         # parse_page(soup)
 
-    # while True:
-        # if parseHotelList(urlqueue[0])!=0:
-        #     break
-        # print 'try again'
-    #
-    # print urlqueue[2]
+    while True:
+        if parseHotelList(urlqueue[0])!=0:
+            break
+        print 'try again'
 
-    # parseAttractionList(urlqueue[2])
+
+
+    parseAttractionList(urlqueue[2])
 
 
     while True:
