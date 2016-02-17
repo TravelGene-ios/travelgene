@@ -23,6 +23,7 @@
 		862C776D1C5EF89300267B68 /* TravelGeneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 862C776C1C5EF89300267B68 /* TravelGeneTests.m */; };
 		86608A7F1C5F412E001EF372 /* LogedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86608A7E1C5F412E001EF372 /* LogedInViewController.m */; };
 		86608A851C5F4314001EF372 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86608A841C5F4314001EF372 /* SignInViewController.m */; };
+		86FF83E21C7421A8008249C3 /* FriendListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FF83E11C7421A8008249C3 /* FriendListController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		86608A7E1C5F412E001EF372 /* LogedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogedInViewController.m; sourceTree = "<group>"; };
 		86608A831C5F4314001EF372 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
 		86608A841C5F4314001EF372 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		86FF83E01C7421A8008249C3 /* FriendListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendListController.h; sourceTree = "<group>"; };
+		86FF83E11C7421A8008249C3 /* FriendListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendListController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				862C77531C5EF89300267B68 /* Main.storyboard */,
 				86608A7D1C5F412E001EF372 /* LogedInViewController.h */,
 				86608A7E1C5F412E001EF372 /* LogedInViewController.m */,
+				86FF83E01C7421A8008249C3 /* FriendListController.h */,
+				86FF83E11C7421A8008249C3 /* FriendListController.m */,
 				862C77561C5EF89300267B68 /* JLViewController.h */,
 				862C77571C5EF89300267B68 /* JLViewController.m */,
 				86608A831C5F4314001EF372 /* SignInViewController.h */,
@@ -207,7 +212,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = JL;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = TravelGene;
 				TargetAttributes = {
 					862C775E1C5EF89300267B68 = {
@@ -263,6 +268,7 @@
 				86608A851C5F4314001EF372 /* SignInViewController.m in Sources */,
 				862C77521C5EF89300267B68 /* JLAppDelegate.m in Sources */,
 				862C77581C5EF89300267B68 /* JLViewController.m in Sources */,
+				86FF83E21C7421A8008249C3 /* FriendListController.m in Sources */,
 				862C774E1C5EF89300267B68 /* main.m in Sources */,
 				86608A7F1C5F412E001EF372 /* LogedInViewController.m in Sources */,
 			);
@@ -332,6 +338,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -392,6 +399,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TravelGene/TravelGene-Prefix.pch";
 				INFOPLIST_FILE = "TravelGene/TravelGene-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.travelgene.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -405,6 +413,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TravelGene/TravelGene-Prefix.pch";
 				INFOPLIST_FILE = "TravelGene/TravelGene-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.travelgene.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -426,6 +435,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "TravelGeneTests/TravelGeneTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.travelgene.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -444,6 +454,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TravelGene/TravelGene-Prefix.pch";
 				INFOPLIST_FILE = "TravelGeneTests/TravelGeneTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.travelgene.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "862C773D1C5EF89300267B68"
-               BuildableName = "TravelGene.app"
-               BlueprintName = "TravelGene"
-               ReferencedContainer = "container:TravelGene.xcodeproj">
+               BlueprintIdentifier = "5C539F051C6ABA1B00D78977"
+               BuildableName = "TabMain.app"
+               BlueprintName = "TabMain"
+               ReferencedContainer = "container:TabMain.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "862C775E1C5EF89300267B68"
-               BuildableName = "TravelGeneTests.xctest"
-               BlueprintName = "TravelGeneTests"
-               ReferencedContainer = "container:TravelGene.xcodeproj">
+               BlueprintIdentifier = "5C539F211C6ABA1B00D78977"
+               BuildableName = "TabMainTests.xctest"
+               BlueprintName = "TabMainTests"
+               ReferencedContainer = "container:TabMain.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5C539F2C1C6ABA1B00D78977"
+               BuildableName = "TabMainUITests.xctest"
+               BlueprintName = "TabMainUITests"
+               ReferencedContainer = "container:TabMain.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "862C773D1C5EF89300267B68"
-            BuildableName = "TravelGene.app"
-            BlueprintName = "TravelGene"
-            ReferencedContainer = "container:TravelGene.xcodeproj">
+            BlueprintIdentifier = "5C539F051C6ABA1B00D78977"
+            BuildableName = "TabMain.app"
+            BlueprintName = "TabMain"
+            ReferencedContainer = "container:TabMain.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "862C773D1C5EF89300267B68"
-            BuildableName = "TravelGene.app"
-            BlueprintName = "TravelGene"
-            ReferencedContainer = "container:TravelGene.xcodeproj">
+            BlueprintIdentifier = "5C539F051C6ABA1B00D78977"
+            BuildableName = "TabMain.app"
+            BlueprintName = "TabMain"
+            ReferencedContainer = "container:TabMain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -84,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "862C773D1C5EF89300267B68"
-            BuildableName = "TravelGene.app"
-            BlueprintName = "TravelGene"
-            ReferencedContainer = "container:TravelGene.xcodeproj">
+            BlueprintIdentifier = "5C539F051C6ABA1B00D78977"
+            BuildableName = "TabMain.app"
+            BlueprintName = "TabMain"
+            ReferencedContainer = "container:TabMain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
