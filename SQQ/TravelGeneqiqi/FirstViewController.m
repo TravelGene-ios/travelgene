@@ -20,26 +20,31 @@
     
     [_destination setDelegate:self];
     
-    datePicker=[[UIDatePicker alloc] init];
-    datePicker.datePickerMode=UIDatePickerModeDate;
-    [self.departDate setInputView:datePicker];
     
-    seconddata=[[UIDatePicker alloc] init];
-    seconddata.datePickerMode=UIDatePickerModeDate;
-    [self.returnDate setInputView:seconddata];
+    //depart Date Picker
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    datePicker.backgroundColor = [UIColor whiteColor];
+    [datePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
+    self.departDate.inputView = datePicker;
     
     
-    UIToolbar *toolBar=[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [toolBar setTintColor:[UIColor redColor]];
-    UIBarButtonItem *doneButton=[[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(ShowSelectedDate)];
+    //return Date Picker
+    returnDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    returnDatePicker.datePickerMode = UIDatePickerModeDate;
     
-    UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                        target:nil
-                                                                        action:nil];
-    [toolBar setItems:[NSArray arrayWithObjects:space,doneButton,nil]];
+    returnDatePicker.backgroundColor = [UIColor whiteColor];
+    [returnDatePicker addTarget:self action:@selector(returndateUpdated:) forControlEvents:UIControlEventValueChanged];
+    self.returnDate.inputView = returnDatePicker;
+    
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonWasPressed:)];
+    UIBarButtonItem *flexibleSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    toolbar.items = @[flexibleSeparator, doneButton];
+    self.departDate.inputAccessoryView = toolbar;
+    
+    self.returnDate.inputAccessoryView=toolbar;
     
 }
 
@@ -58,17 +63,22 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-
--(void)ShowSelectedDate
-{
-    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"dd/mm/yyyy"];
-    self.departDate.text=[NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
-    [self.departDate resignFirstResponder];
-    
-    self.returnDate.text=[NSString stringWithFormat:@"%@",[formatter stringFromDate:seconddata.date]];
-    [self.returnDate resignFirstResponder];
+//departDate Update
+- (void) dateUpdated:(UIDatePicker *)datePicker {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.departDate.text = [formatter stringFromDate:datePicker.date];
 }
+
+
+//returnDate Update
+- (void) returndateUpdated:(UIDatePicker *)datePicker {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.returnDate.text = [formatter stringFromDate:datePicker.date];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

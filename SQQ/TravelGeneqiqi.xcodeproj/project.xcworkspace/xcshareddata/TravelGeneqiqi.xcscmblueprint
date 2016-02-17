@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F01B8C92102EB2DF07D5309E75908D6E24706FD3" : 0,
+    "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "01C7CA35-BEEA-49F5-A070-F55086AD07FE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F01B8C92102EB2DF07D5309E75908D6E24706FD3" : "",
+    "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67" : "travelgene\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TravelGeneqiqi",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SQQ\/TravelGeneqiqi.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/argonne.pc.cc.cmu.edu:8080\/travelgene\/travelgene.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/argonne.pc.cc.cmu.edu:8080\/travelgene\/travelgene.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F01B8C92102EB2DF07D5309E75908D6E24706FD3"
+    }
+  ]
+}

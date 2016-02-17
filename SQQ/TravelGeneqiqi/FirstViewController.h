@@ -11,7 +11,7 @@
 @interface FirstViewController : UIViewController<UITextFieldDelegate>
 {
     UIDatePicker *datePicker;
-    UIDatePicker *seconddata;
+    UIDatePicker *returnDatePicker;
 }
 @property (weak, nonatomic) IBOutlet UITextField *destination;
 @property (weak, nonatomic) IBOutlet UITextField *departDate;
