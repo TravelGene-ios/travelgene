@@ -86,6 +86,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="6du-aQ-OMK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="departDate" destination="f0X-pG-Nqo" id="qUm-vQ-qoM"/>
@@ -123,7 +124,15 @@
                             <outlet property="delegate" destination="8Ai-MN-WpN" id="hJ9-Q2-IVs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Interest" id="EA4-5n-ccH"/>
+                    <navigationItem key="navigationItem" title="Interest" id="EA4-5n-ccH">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="6CG-iZ-fmX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fc1-fY-2a2">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B15-dP-QFY" userLabel="First Responder" sceneMemberID="firstResponder"/>

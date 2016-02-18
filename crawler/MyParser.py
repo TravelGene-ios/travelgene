@@ -140,6 +140,7 @@ def get_hotel_address(element, res):
 
 def get_hotel_class(element, res):
     try:
+        res['class'] = "Unknown"
         class_img_div = element.find("img",attrs={"class":"sprite-rating_cl_gry_fill rating_cl_gry_fill cl_gry30"})
         if class_img_div:
             score_alt = class_img_div['alt']
@@ -312,7 +313,13 @@ def get_restaurant_price_range(element, res):
 
 def get_last_page_no(soup):
     page_no = -1
-    for page in soup.find_all("a",attrs ={"class":"pageNum taLnk"} ) :
+    last_taLnk = soup.find_all("a",attrs ={"class":"pageNum last taLnk"} )
+
+    if not last_taLnk:
+        # print "aaaaaaaaaaaaaaa"
+        last_taLnk = soup.find_all("a",attrs ={"class":"pageNum taLnk"} )
+
+    for page in last_taLnk:
         p = unicode (page.string.strip())
         if p != None and int(p) > page_no:
             page_no = int(p)
@@ -407,7 +414,7 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g28970-Washington_DC_District_of_Columbia-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g31352-Sedona_Arizona-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
@@ -442,7 +449,7 @@ if __name__ == "__main__":
 
     parseAttractionList(urlqueue[2])
 
-
+    #
     while True:
         if parseRestaurantList(urlqueue[3]):
             break
