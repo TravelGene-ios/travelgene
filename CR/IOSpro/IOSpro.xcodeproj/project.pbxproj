@@ -14,6 +14,8 @@
 		EA0C7F7E1C727995002050F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0C7F7C1C727995002050F8 /* LaunchScreen.xib */; };
 		EA0C7F8A1C727995002050F8 /* IOSproTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C7F891C727995002050F8 /* IOSproTests.swift */; };
 		EA0C7F941C728862002050F8 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C7F931C728862002050F8 /* ReviewsViewController.swift */; };
+		EA0C7F961C73915B002050F8 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C7F951C73915B002050F8 /* WriteViewController.swift */; };
+		EA0C7F981C74F19B002050F8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C7F971C74F19B002050F8 /* HistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		EA0C7F881C727995002050F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA0C7F891C727995002050F8 /* IOSproTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSproTests.swift; sourceTree = "<group>"; };
 		EA0C7F931C728862002050F8 /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		EA0C7F951C73915B002050F8 /* WriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		EA0C7F971C74F19B002050F8 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 				EA0C7F7C1C727995002050F8 /* LaunchScreen.xib */,
 				EA0C7F711C727995002050F8 /* Supporting Files */,
 				EA0C7F931C728862002050F8 /* ReviewsViewController.swift */,
+				EA0C7F951C73915B002050F8 /* WriteViewController.swift */,
+				EA0C7F971C74F19B002050F8 /* HistoryViewController.swift */,
 			);
 			path = IOSpro;
 			sourceTree = "<group>";
@@ -217,6 +223,8 @@
 			files = (
 				EA0C7F761C727995002050F8 /* ViewController.swift in Sources */,
 				EA0C7F941C728862002050F8 /* ReviewsViewController.swift in Sources */,
+				EA0C7F961C73915B002050F8 /* WriteViewController.swift in Sources */,
+				EA0C7F981C74F19B002050F8 /* HistoryViewController.swift in Sources */,
 				EA0C7F741C727995002050F8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +417,7 @@
 				EA0C7F8F1C727995002050F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EA0C7F901C727995002050F8 /* Build configuration list for PBXNativeTarget "IOSproTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +426,7 @@
 				EA0C7F921C727995002050F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

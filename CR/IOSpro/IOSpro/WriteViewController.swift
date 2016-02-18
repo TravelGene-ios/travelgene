@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WriteViewController2: UIViewController {
+class WriteViewController: UIViewController {
     var index = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +23,11 @@ class WriteViewController2: UIViewController {
     @IBAction func startGame(){
         self.index++
         let myalert = UIAlertView()
-        myalert.title = "准备好了吗"
-        myalert.message = "准备好开始了吗？"
-        myalert.addButtonWithTitle("Ready, go!")
+        myalert.title = "Comment Summited"
+        myalert.message = "Comment Summited"
+        myalert.addButtonWithTitle("OK")
         myalert.show()
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     let newController = segue.destinationViewController as TestViewController
