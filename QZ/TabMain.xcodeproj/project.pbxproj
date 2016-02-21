@@ -18,6 +18,12 @@
 		5C539F4F1C6AC28000D78977 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F4E1C6AC28000D78977 /* TableViewController.m */; };
 		5C539F511C6AC2BB00D78977 /* _Images in Resources */ = {isa = PBXBuildFile; fileRef = 5C539F501C6AC2BB00D78977 /* _Images */; };
 		5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F551C6AD82E00D78977 /* TripDetailViewController.m */; };
+		5C78E2571C7A487F009D3F5C /* CreateTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C78E2561C7A487F009D3F5C /* CreateTrip.storyboard */; };
+		5C78E25A1C7A4B3D009D3F5C /* CreateTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */; };
+		5C78E25D1C7A4FB0009D3F5C /* InterestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E25C1C7A4FB0009D3F5C /* InterestDetailViewController.m */; };
+		5C78E2611C7A4FE7009D3F5C /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5C78E25E1C7A4FE7009D3F5C /* 1.jpg */; };
+		5C78E2621C7A4FE7009D3F5C /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2601C7A4FE7009D3F5C /* Cell.m */; };
+		5C78E2651C7A5062009D3F5C /* InterestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */; };
 		5C8989991C7286B300415618 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8989981C7286B300415618 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +66,16 @@
 		5C539F501C6AC2BB00D78977 /* _Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _Images; sourceTree = "<group>"; };
 		5C539F541C6AD82E00D78977 /* TripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripDetailViewController.h; sourceTree = "<group>"; };
 		5C539F551C6AD82E00D78977 /* TripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDetailViewController.m; sourceTree = "<group>"; };
+		5C78E2561C7A487F009D3F5C /* CreateTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTrip.storyboard; sourceTree = "<group>"; };
+		5C78E2581C7A4B3D009D3F5C /* CreateTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTripViewController.h; sourceTree = "<group>"; };
+		5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTripViewController.m; sourceTree = "<group>"; };
+		5C78E25B1C7A4FB0009D3F5C /* InterestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestDetailViewController.h; sourceTree = "<group>"; };
+		5C78E25C1C7A4FB0009D3F5C /* InterestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestDetailViewController.m; sourceTree = "<group>"; };
+		5C78E25E1C7A4FE7009D3F5C /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		5C78E25F1C7A4FE7009D3F5C /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		5C78E2601C7A4FE7009D3F5C /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		5C78E2631C7A5062009D3F5C /* InterestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestTableViewController.h; sourceTree = "<group>"; };
+		5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestTableViewController.m; sourceTree = "<group>"; };
 		5C8989971C7286B300415618 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		5C8989981C7286B300415618 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,17 +131,27 @@
 			children = (
 				5C8989971C7286B300415618 /* ProfileViewController.h */,
 				5C8989981C7286B300415618 /* ProfileViewController.m */,
+				5C78E25B1C7A4FB0009D3F5C /* InterestDetailViewController.h */,
+				5C78E25C1C7A4FB0009D3F5C /* InterestDetailViewController.m */,
+				5C78E2631C7A5062009D3F5C /* InterestTableViewController.h */,
+				5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */,
+				5C78E25E1C7A4FE7009D3F5C /* 1.jpg */,
+				5C78E25F1C7A4FE7009D3F5C /* Cell.h */,
+				5C78E2601C7A4FE7009D3F5C /* Cell.m */,
 				5C539F4D1C6AC28000D78977 /* TableViewController.h */,
 				5C539F4E1C6AC28000D78977 /* TableViewController.m */,
 				5C539F0C1C6ABA1B00D78977 /* AppDelegate.h */,
 				5C539F0D1C6ABA1B00D78977 /* AppDelegate.m */,
 				5C539F0F1C6ABA1B00D78977 /* FirstViewController.h */,
+				5C78E2581C7A4B3D009D3F5C /* CreateTripViewController.h */,
+				5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */,
 				5C539F101C6ABA1B00D78977 /* FirstViewController.m */,
 				5C539F151C6ABA1B00D78977 /* Main.storyboard */,
 				5C539F541C6AD82E00D78977 /* TripDetailViewController.h */,
 				5C539F551C6AD82E00D78977 /* TripDetailViewController.m */,
 				5C539F181C6ABA1B00D78977 /* Assets.xcassets */,
 				5C539F1A1C6ABA1B00D78977 /* LaunchScreen.storyboard */,
+				5C78E2561C7A487F009D3F5C /* CreateTrip.storyboard */,
 				5C539F1D1C6ABA1B00D78977 /* Info.plist */,
 				5C539F091C6ABA1B00D78977 /* Supporting Files */,
 			);
@@ -264,7 +290,9 @@
 				5C539F511C6AC2BB00D78977 /* _Images in Resources */,
 				5C539F1C1C6ABA1B00D78977 /* LaunchScreen.storyboard in Resources */,
 				5C539F191C6ABA1B00D78977 /* Assets.xcassets in Resources */,
+				5C78E2611C7A4FE7009D3F5C /* 1.jpg in Resources */,
 				5C539F171C6ABA1B00D78977 /* Main.storyboard in Resources */,
+				5C78E2571C7A487F009D3F5C /* CreateTrip.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +318,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C539F0E1C6ABA1B00D78977 /* AppDelegate.m in Sources */,
+				5C78E2651C7A5062009D3F5C /* InterestTableViewController.m in Sources */,
+				5C78E25D1C7A4FB0009D3F5C /* InterestDetailViewController.m in Sources */,
 				5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */,
+				5C78E25A1C7A4B3D009D3F5C /* CreateTripViewController.m in Sources */,
 				5C539F111C6ABA1B00D78977 /* FirstViewController.m in Sources */,
 				5C539F4F1C6AC28000D78977 /* TableViewController.m in Sources */,
 				5C8989991C7286B300415618 /* ProfileViewController.m in Sources */,
 				5C539F0B1C6ABA1B00D78977 /* main.m in Sources */,
+				5C78E2621C7A4FE7009D3F5C /* Cell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
