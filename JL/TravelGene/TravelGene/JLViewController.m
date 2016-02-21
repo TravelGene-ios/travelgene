@@ -71,10 +71,13 @@
     [defaults setObject:_txtUsername.text forKey:@"username"];
     [defaults setObject:_txtPassword.text forKey:@"password"];
     [defaults setBool:YES forKey:@"registered"];
+    
+    // save the password and username to keychain
     KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"YourAppLogin" accessGroup:nil];
     [keychainItem setObject:_txtPassword.text forKey:@"password"];
     [keychainItem setObject:_txtUsername.text forKey:@"username"];
-
+    
+    // save the password and username to MySQL database
     /**
      NSString *password = [keychainItem objectForKey:@"password"];
      NSString *username = [keychainItem objectForKey:@"username"];
@@ -82,6 +85,7 @@
     
     [defaults synchronize];
     
+    // give the button as alert, indicating the user was registered into system successfully
     UIAlertView *success = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You have registered as a new user" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
     
     [success show];
