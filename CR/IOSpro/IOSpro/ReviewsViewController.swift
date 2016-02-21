@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WriteViewController: UIViewController {
+class WriteViewController2: UIViewController {
     var index = 0
     override func viewDidLoad() {
         super.viewDidLoad()
