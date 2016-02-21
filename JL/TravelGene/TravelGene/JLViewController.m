@@ -7,6 +7,7 @@
 //
 
 #import "JLViewController.h"
+#import "KeychainItemWrapper.h"
 
 @interface JLViewController ()
 
@@ -67,6 +68,14 @@
     [defaults setObject:_txtUsername.text forKey:@"username"];
     [defaults setObject:_txtPassword.text forKey:@"password"];
     [defaults setBool:YES forKey:@"registered"];
+//    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"YourAppLogin" accessGroup:nil];
+//    [keychainItem setObject:@"password" forKey:kSecValueData];
+//    [keychainItem setObject:@"username" forKey:kSecAttrAccount];
+//    
+    /**
+     NSString *password = [keychainItem objectForKey:kSecValueData];
+     NSString *username = [keychainItem objectForKey:kSecAttrAccount];
+     */
     
     [defaults synchronize];
     

@@ -116,12 +116,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TravelGene" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzi-L0-md6">
-                                <rect key="frame" x="56" y="40" width="208" height="56"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have logged in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da8-uu-7ba">
                                 <rect key="frame" x="36" y="186" width="251" height="64"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -143,20 +137,29 @@
                                     <action selector="logout:" destination="H17-mS-c4q" eventType="touchUpInside" id="TEW-nh-Cmx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ph-IG-ZGy">
-                                <rect key="frame" x="104" y="450" width="114" height="30"/>
-                                <color key="backgroundColor" red="0.75634443731273837" green="1" blue="0.19896459192611393" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Go to Friend List">
-                                    <color key="titleColor" red="1" green="0.069229112547900762" blue="0.98922444089093331" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <segue destination="uRh-M0-mZH" kind="modal" id="Kqh-Mm-Y8w"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Con-fF-uik">
+                                <rect key="frame" x="0.0" y="34" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="TravelGene" id="Y1U-Gb-dlv">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="kGL-Bo-n7g">
+                                            <connections>
+                                                <action selector="shareButton:" destination="H17-mS-c4q" id="Vid-83-R42"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TravelGene" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzi-L0-md6">
+                                <rect key="frame" x="57" y="99" width="208" height="56"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sC5-Kj-rYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,44 +250,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="127" y="479"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="gwq-34-gpK">
-            <objects>
-                <viewController id="uRh-M0-mZH" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oml-I4-i9w"/>
-                        <viewControllerLayoutGuide type="bottom" id="ED0-nd-QJL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bcs-zm-twa" customClass="FriendList">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihe-qj-9Jl">
-                                <rect key="frame" x="74" y="13" width="173" height="56"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Wv-ol-sUl">
-                                <rect key="frame" x="0.0" y="69" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mj5-ak-f8f">
-                                <rect key="frame" x="0.0" y="129" width="320" height="439"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="uRh-M0-mZH" id="eH3-FC-8BF"/>
-                                    <outlet property="delegate" destination="uRh-M0-mZH" id="2S5-lJ-ZGW"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="01H-4G-cKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="663" y="800"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

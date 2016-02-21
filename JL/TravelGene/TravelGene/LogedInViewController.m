@@ -49,4 +49,14 @@
 - (IBAction)logout:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)shareButton:(UIBarButtonItem *)sender
+{
+    NSString *textToShare = @"Look at this awesome travelgene app";
+    NSArray *itemsToShare = @[textToShare];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:itemsToShare applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[];
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 @end

@@ -11,4 +11,5 @@
 @interface LogedInViewController : UIViewController
 
 - (IBAction)logout:(id)sender;
+- (IBAction)shareButton:(UIBarButtonItem *)sender;
 @end
