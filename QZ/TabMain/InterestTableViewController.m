@@ -10,7 +10,7 @@
 #import "InterestDetailViewController.h"
 
 @interface InterestTableViewController ()
-
+@property (nonatomic) int count;
 @end
 
 @implementation InterestTableViewController{
@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     interest=[NSArray arrayWithObjects:@"Golden Gate Park", @"Golden Gate Bridge", nil];
-    
+    self.title = @"Interests";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -96,7 +96,11 @@
     return YES;
 }
 */
-
+- (IBAction)touchNextBtn:(id)sender {
+    self.count++;
+    NSLog(@"count = %d",self.count);
+    [self performSegueWithIdentifier:@"FlightViewController" sender:self];
+}
 
 #pragma mark - Navigation
 
@@ -109,8 +113,26 @@
         NSIndexPath *indexPath=[self.tableView indexPathForSelectedRow];
         InterestDetailViewController *destViewController=segue.destinationViewController;
         destViewController.interestName=[interest objectAtIndex:indexPath.row];
-        
+        NSLog(@"to detail.");
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // UIAlertView *messageAlert = [[UIAlertView alloc]
+    //                              initWithTitle:@"Row Selected" message:[detail objectAtIndex:indexPath.row] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    // Display Alert Message
+    //    [messageAlert show];
+//    NSLog(@"Did select, Passed Row index:%d",indexPath.row);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // Store Selection
+    //    [self setSelection:indexPath];
+    
+    // Perform the segue with identifier: updateToDoViewController
+    [self performSegueWithIdentifier:@"arrayDetail" sender:indexPath];
+    
 }
 
 @end
