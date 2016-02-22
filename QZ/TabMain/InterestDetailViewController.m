@@ -24,7 +24,7 @@
     [[self myPictureCollectionView]setDataSource:self];
     [[self myPictureCollectionView]setDelegate:self];
     
-    arrayOfImages=[[NSArray alloc]initWithObjects:@"1.jpg",@"1.jpg", nil];
+    arrayOfImages=[[NSArray alloc]initWithObjects:@"interestDetail.jpg",@"interestDetail.jpg", nil];
     
     // Do any additional setup after loading the view.
 }
