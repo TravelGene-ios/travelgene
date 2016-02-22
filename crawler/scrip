@@ -10,4 +10,14 @@ scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Attractions_out.js
 
 
 
+
 service
+
+ssh -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem  ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com
+ 
+scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/
+
+scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service/travelgene/monkapi.py ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/service/travelgene/
+
+
+scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service/travelgene/pymonk-master/monk/core/crane.py ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/service/travelgene/pymonk-master/monk/core/
