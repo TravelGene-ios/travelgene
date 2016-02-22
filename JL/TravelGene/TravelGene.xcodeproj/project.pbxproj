@@ -21,8 +21,10 @@
 		862C77631C5EF89300267B68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 862C77451C5EF89300267B68 /* UIKit.framework */; };
 		862C776B1C5EF89300267B68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 862C77691C5EF89300267B68 /* InfoPlist.strings */; };
 		862C776D1C5EF89300267B68 /* TravelGeneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 862C776C1C5EF89300267B68 /* TravelGeneTests.m */; };
-		8652D3B51C7A4485008C7D8B /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8652D3B41C7A4485008C7D8B /* KeychainItemWrapper.m */; };
 		8652D3B71C7A4622008C7D8B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8652D3B61C7A4622008C7D8B /* Security.framework */; };
+		8652D3BB1C7A5F15008C7D8B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8652D3B81C7A5F15008C7D8B /* FBSDKCoreKit.framework */; };
+		8652D3BC1C7A5F15008C7D8B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8652D3B91C7A5F15008C7D8B /* FBSDKLoginKit.framework */; };
+		8652D3BD1C7A5F15008C7D8B /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8652D3BA1C7A5F15008C7D8B /* FBSDKShareKit.framework */; };
 		86608A7F1C5F412E001EF372 /* LogedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86608A7E1C5F412E001EF372 /* LogedInViewController.m */; };
 		86608A851C5F4314001EF372 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86608A841C5F4314001EF372 /* SignInViewController.m */; };
 /* End PBXBuildFile section */
@@ -57,9 +59,10 @@
 		862C77681C5EF89300267B68 /* TravelGeneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TravelGeneTests-Info.plist"; sourceTree = "<group>"; };
 		862C776A1C5EF89300267B68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		862C776C1C5EF89300267B68 /* TravelGeneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TravelGeneTests.m; sourceTree = "<group>"; };
-		8652D3B31C7A4485008C7D8B /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		8652D3B41C7A4485008C7D8B /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		8652D3B61C7A4622008C7D8B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Security.framework; sourceTree = "<group>"; };
+		8652D3B81C7A5F15008C7D8B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		8652D3B91C7A5F15008C7D8B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		8652D3BA1C7A5F15008C7D8B /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		86608A7D1C5F412E001EF372 /* LogedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogedInViewController.h; sourceTree = "<group>"; };
 		86608A7E1C5F412E001EF372 /* LogedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogedInViewController.m; sourceTree = "<group>"; };
 		86608A831C5F4314001EF372 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
@@ -71,7 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8652D3BB1C7A5F15008C7D8B /* FBSDKCoreKit.framework in Frameworks */,
 				862C77441C5EF89300267B68 /* CoreGraphics.framework in Frameworks */,
+				8652D3BC1C7A5F15008C7D8B /* FBSDKLoginKit.framework in Frameworks */,
+				8652D3BD1C7A5F15008C7D8B /* FBSDKShareKit.framework in Frameworks */,
 				862C77461C5EF89300267B68 /* UIKit.framework in Frameworks */,
 				8652D3B71C7A4622008C7D8B /* Security.framework in Frameworks */,
 				862C77421C5EF89300267B68 /* Foundation.framework in Frameworks */,
@@ -113,6 +119,9 @@
 		862C77401C5EF89300267B68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8652D3B81C7A5F15008C7D8B /* FBSDKCoreKit.framework */,
+				8652D3B91C7A5F15008C7D8B /* FBSDKLoginKit.framework */,
+				8652D3BA1C7A5F15008C7D8B /* FBSDKShareKit.framework */,
 				862C77411C5EF89300267B68 /* Foundation.framework */,
 				862C77431C5EF89300267B68 /* CoreGraphics.framework */,
 				8652D3B61C7A4622008C7D8B /* Security.framework */,
@@ -125,8 +134,6 @@
 		862C77471C5EF89300267B68 /* TravelGene */ = {
 			isa = PBXGroup;
 			children = (
-				8652D3B31C7A4485008C7D8B /* KeychainItemWrapper.h */,
-				8652D3B41C7A4485008C7D8B /* KeychainItemWrapper.m */,
 				862C77501C5EF89300267B68 /* JLAppDelegate.h */,
 				862C77511C5EF89300267B68 /* JLAppDelegate.m */,
 				862C77531C5EF89300267B68 /* Main.storyboard */,
@@ -271,7 +278,6 @@
 			files = (
 				86608A851C5F4314001EF372 /* SignInViewController.m in Sources */,
 				862C77521C5EF89300267B68 /* JLAppDelegate.m in Sources */,
-				8652D3B51C7A4485008C7D8B /* KeychainItemWrapper.m in Sources */,
 				862C77581C5EF89300267B68 /* JLViewController.m in Sources */,
 				862C774E1C5EF89300267B68 /* main.m in Sources */,
 				86608A7F1C5F412E001EF372 /* LogedInViewController.m in Sources */,

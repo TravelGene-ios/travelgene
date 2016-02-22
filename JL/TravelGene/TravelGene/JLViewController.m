@@ -7,7 +7,8 @@
 //
 
 #import "JLViewController.h"
-#import "KeychainItemWrapper.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface JLViewController ()
 
@@ -29,6 +30,14 @@
         //_txtRepeatPassword.hidden = YES;
         //_registerBtn.hidden = YES;
     }
+    // facebook login part
+    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    // Optional: Place the button in the center of your view.
+//    loginButton.center = self.view.center;
+    
+    loginButton.center = CGPointMake((self.view.frame.size.width)/2, (self.view.frame.size.height) - 80);
+
+    [self.view addSubview:loginButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,9 +82,9 @@
     [defaults setBool:YES forKey:@"registered"];
     
     // save the password and username to keychain
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"YourAppLogin" accessGroup:nil];
-    [keychainItem setObject:_txtPassword.text forKey:@"password"];
-    [keychainItem setObject:_txtUsername.text forKey:@"username"];
+//    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"YourAppLogin" accessGroup:nil];
+//    [keychainItem setObject:_txtPassword.text forKey:@"password"];
+//    [keychainItem setObject:_txtUsername.text forKey:@"username"];
     
     // save the password and username to MySQL database
     /**
