@@ -7,3 +7,7 @@ scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Hotels_out.json /U
 scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Restaurant_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/Seattle/
 
 scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/Washington\ DC/
+
+
+
+service
