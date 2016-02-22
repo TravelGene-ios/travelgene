@@ -48,6 +48,7 @@
 
 - (IBAction)logout:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+    // also log out Facebook from here
 }
 
 - (IBAction)shareButton:(UIBarButtonItem *)sender
