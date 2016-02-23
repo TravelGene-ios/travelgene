@@ -6,8 +6,8 @@ from travelgene import app
 from flask_debugtoolbar import DebugToolbarExtension
 from flask.ext.cors import CORS
 
-# import monkapi
-# import testmonk
+import monkapi
+import testmonk
 
 
 
@@ -50,16 +50,29 @@ def connect_mongodb_test():
 
 
 # Author: Qiankun
-# @app.route('/testmonk.html')
-# def monktest():
-#     monkapi.init_monk()
-#
-#     monkapi.init_database()
-#
-#     monkapi.add_label(monkapi.get_entity_id("Kirkland","Kirkland_00000000"), "place_type", "restaurant")
-#
-#     return
-#
+@app.route('/testmonk', methods=['POST'])
+def monktest():
+    monkapi.init_monk()
+
+    monkapi.init_database()
+
+    title = request.form['title']
+    entity_id = request.form['entity_id']
+    value = request.form['value']
+
+    entity_id = "56ba83ba768b7d425adc9969"
+    monkapi.add_label("56ba83ba768b7d425adc9969", "likeTravel", "Y")
+    newlist = monkapi.update_recommended_place(title, entity_id, value)
+    for i in newlist:
+        print newlist
+
+    # monkapi.add_label(monkapi.get_entity_id("newyorks","Seattle_00000002"), "likeTravel", "Y")
+    # monkapi.add_label(monkapi.get_entity_id("newyorks","Seattle_00000003"), "likeTravel", "Y")
+
+    return
+
+
+
 
 
 

@@ -14,9 +14,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[FBSDKApplicationDelegate sharedInstance] application:application
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
-    return YES;
+//    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -26,6 +26,7 @@
                                                        annotation:annotation
             ];
 }
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

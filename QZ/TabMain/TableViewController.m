@@ -63,7 +63,7 @@
     
     // Display Alert Message
 //    [messageAlert show];
-    NSLog(@"Did select, Passed Row index:%d",indexPath.row);
+//    NSLog(@"Did select, Passed Row index:%d",indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     // Store Selection
