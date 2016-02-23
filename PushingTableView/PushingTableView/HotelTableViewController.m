@@ -8,7 +8,6 @@
 
 #import "HotelTableViewController.h"
 #import "HotelDetailsViewController.h"
-#import "Hotel.h"
 @interface HotelTableViewController ()
 
 @end
