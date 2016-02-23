@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainPageTripCell.h"
 
 @interface TripDetailViewController : UIViewController
-@property (nonatomic, strong) NSString *data;
+@property (nonatomic, strong) MainPageTripCell *data;
 @end

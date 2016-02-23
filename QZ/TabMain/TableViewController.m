@@ -8,7 +8,7 @@
 
 #import "TableViewController.h"
 #import "TripDetailViewController.h"
-
+#import "MainPageTripCell.h"
 @interface TableViewController ()
 
 @end
@@ -18,31 +18,18 @@
 
 @implementation TableViewController
 {
-    NSArray *userName;
-    NSArray *detail;
     NSInteger recordNum;
 }
-//@synthesize tableView;
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    NSLog(@"Called here\n");
-    return recordNum;
-}
 
-- (IBAction)Back
-{
-    [self dismissViewControllerAnimated:YES completion:nil]; // ios 6
-}
+@synthesize tripArray;
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    userName = [NSArray arrayWithObjects:@"Qiankun", @"Yancheng", @"Tina", @"Qiqi", nil];
-    detail = [NSArray arrayWithObjects: @"Went to Chicago with my Zhenzhen!",
-              @"Went to Orlando",
-              @"Went to Boston",
-              @"Went to Mexico", nil];
-    recordNum = [userName count];
+    [self retrieveData];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,6 +42,15 @@
     self.title = @"TravelGene";
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return recordNum;
+}
+
+- (IBAction)Back
+{
+    [self dismissViewControllerAnimated:YES completion:nil]; // ios 6
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -83,8 +79,8 @@
 //        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
 //        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         TripDetailViewController *destViewController = segue.destinationViewController;
-        destViewController.data = [detail objectAtIndex:indexPath.row];
-        NSLog(@"Prepare, Passed Row index:%d",indexPath.row);
+        destViewController.data = [tripArray objectAtIndex:indexPath.row];
+//        NSLog(@"Prepare, Passed Row index:%d",indexPath.row);
         
     }
 }
@@ -102,11 +98,30 @@
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = [userName objectAtIndex:indexPath.row];
+    MainPageTripCell *obj;
+    obj = [tripArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = obj.userName;
     cell.indentationLevel = 2;
-    cell.detailTextLabel.text = [detail objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = obj.desp;
     cell.imageView.image = [UIImage imageNamed:@"test.jpg"];
     return cell;
+}
+
+- (void) retrieveData
+{
+    NSString *getTripURL = @"http://ec2-52-90-95-189.compute-1.amazonaws.com:5000/get_trips?count=10";
+    NSURL *url = [NSURL URLWithString:getTripURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    NSMutableArray *jsonArray;
+    jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    tripArray = [[NSMutableArray alloc]init];
+    for (int i = 0; i < jsonArray.count; i++) {
+        NSString* userName = [[jsonArray objectAtIndex:i] objectForKey:@"username"];
+        NSString* desp = [[jsonArray objectAtIndex:i] objectForKey:@"desp"];
+        NSString* tripId = [[jsonArray objectAtIndex:i] objectForKey:@"tripId"];
+        [tripArray addObject:[[MainPageTripCell alloc] initWithUserName:userName andTripId:tripId andDesp:desp]];
+    }
+    recordNum = jsonArray.count;
 }
 
 - (void)didReceiveMemoryWarning {
