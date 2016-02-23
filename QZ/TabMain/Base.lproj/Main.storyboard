@@ -19,6 +19,7 @@
                         <segue destination="Xwz-f6-xPO" kind="relationship" relationship="viewControllers" id="iUH-R8-nP8"/>
                         <segue destination="lW5-Lp-Dly" kind="relationship" relationship="viewControllers" id="rTc-f9-5BQ"/>
                         <segue destination="27Y-kI-80s" kind="relationship" relationship="viewControllers" id="Xkb-5F-FUB"/>
+                        <segue destination="LuH-ev-p9V" kind="relationship" relationship="viewControllers" id="Nfi-zO-UT0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -45,7 +46,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5QG-q7-nqm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="1216"/>
+            <point key="canvasLocation" x="582" y="1152"/>
         </scene>
         <!--Trip Detail View Controller-->
         <scene sceneID="gy8-XP-dEN">
@@ -82,7 +83,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oX5-Ib-h6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-394" y="344"/>
+            <point key="canvasLocation" x="246" y="256"/>
         </scene>
         <!--Profile-->
         <scene sceneID="vCW-R9-OrA">
@@ -99,7 +100,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5CW-dc-HSK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="456" y="119"/>
+            <point key="canvasLocation" x="776" y="-489"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="T5F-iq-M1S">
@@ -402,12 +403,148 @@
             </objects>
             <point key="canvasLocation" x="2731" y="175"/>
         </scene>
+        <!--Friends-->
+        <scene sceneID="EfH-QS-wwP">
+            <objects>
+                <navigationController id="LuH-ev-p9V" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Friends" image="second" id="LR2-1T-KKt"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EAj-Tp-hfG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vra-Q2-sVa" kind="relationship" relationship="rootViewController" id="OUO-Pf-KRG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NDx-4b-7u1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-915" y="221"/>
+        </scene>
+        <!--Friend Table View Controller-->
+        <scene sceneID="aBe-y5-WfV">
+            <objects>
+                <tableViewController id="vra-Q2-sVa" customClass="FriendTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TrQ-N9-WJ5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="uJ2-Vw-g4o">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uJ2-Vw-g4o" id="OAn-MH-N3a">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="leM-fM-Scj" kind="show" identifier="pushDetailView" id="8tn-sQ-ink">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vra-Q2-sVa" id="OWe-7K-8KV"/>
+                            <outlet property="delegate" destination="vra-Q2-sVa" id="8Np-ou-HZn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="HTN-sU-7o0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zme-ho-Dau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-835" y="1649"/>
+        </scene>
+        <!--Friend Detail View Controller-->
+        <scene sceneID="hVq-cU-RqO">
+            <objects>
+                <viewController id="leM-fM-Scj" customClass="FriendDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="efB-hm-4az"/>
+                        <viewControllerLayoutGuide type="bottom" id="gNi-V2-UXA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KfQ-mk-rJg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVr-z4-LG2">
+                                <rect key="frame" x="20" y="89" width="257" height="77"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aoi-FV-FJA">
+                                <rect key="frame" x="133" y="305" width="447" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6f-kW-dJO">
+                                <rect key="frame" x="133" y="373" width="447" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8Q-gJ-3Xc">
+                                <rect key="frame" x="133" y="441" width="447" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9g-Px-YUs">
+                                <rect key="frame" x="285" y="89" width="116" height="140"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIl-Ur-1Ex">
+                                <rect key="frame" x="20" y="237" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jp-ZY-6gj">
+                                <rect key="frame" x="20" y="305" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osX-Z6-dK0">
+                                <rect key="frame" x="20" y="373" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arY-TN-vSP">
+                                <rect key="frame" x="20" y="441" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEs-aU-6hg">
+                                <rect key="frame" x="133" y="237" width="447" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="friendAgeLabel" destination="U6f-kW-dJO" id="lBw-fs-N5t"/>
+                        <outlet property="friendEmailLabel" destination="Aoi-FV-FJA" id="xQM-gL-cHo"/>
+                        <outlet property="friendGenderLabel" destination="l8Q-gJ-3Xc" id="T1k-zE-Y0d"/>
+                        <outlet property="friendIdLabel" destination="sEs-aU-6hg" id="vKx-3I-r0H"/>
+                        <outlet property="friendImgPicture" destination="d9g-Px-YUs" id="OnQ-eS-W3a"/>
+                        <outlet property="friendNameLabel" destination="MVr-z4-LG2" id="sFs-Nl-JTo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jjR-yL-BXT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="2217"/>
+        </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PPQ-vq-eUy"/>
+        <segue reference="qrs-mb-Q3c"/>
     </inferredMetricsTieBreakers>
 </document>

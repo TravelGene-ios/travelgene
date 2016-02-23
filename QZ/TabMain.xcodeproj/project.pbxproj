@@ -25,6 +25,9 @@
 		5C78E2651C7A5062009D3F5C /* InterestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */; };
 		5C78E2681C7AB8A2009D3F5C /* FindHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2671C7AB8A2009D3F5C /* FindHotelViewController.m */; };
 		5C78E26B1C7ABAD3009D3F5C /* FlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E26A1C7ABAD3009D3F5C /* FlightViewController.m */; };
+		5C78E2701C7B9EA1009D3F5C /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E26D1C7B9EA1009D3F5C /* FriendDetailViewController.m */; };
+		5C78E2711C7B9EA1009D3F5C /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E26F1C7B9EA1009D3F5C /* FriendTableViewController.m */; };
+		5C78E2741C7B9ED6009D3F5C /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2731C7B9ED6009D3F5C /* Friend.m */; };
 		5C8989991C7286B300415618 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8989981C7286B300415618 /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +83,12 @@
 		5C78E2671C7AB8A2009D3F5C /* FindHotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindHotelViewController.m; sourceTree = "<group>"; };
 		5C78E2691C7ABAD3009D3F5C /* FlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightViewController.h; sourceTree = "<group>"; };
 		5C78E26A1C7ABAD3009D3F5C /* FlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightViewController.m; sourceTree = "<group>"; };
+		5C78E26C1C7B9EA1009D3F5C /* FriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailViewController.h; sourceTree = "<group>"; };
+		5C78E26D1C7B9EA1009D3F5C /* FriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailViewController.m; sourceTree = "<group>"; };
+		5C78E26E1C7B9EA1009D3F5C /* FriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewController.h; sourceTree = "<group>"; };
+		5C78E26F1C7B9EA1009D3F5C /* FriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewController.m; sourceTree = "<group>"; };
+		5C78E2721C7B9ED6009D3F5C /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		5C78E2731C7B9ED6009D3F5C /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		5C8989971C7286B300415618 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		5C8989981C7286B300415618 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +159,12 @@
 				5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */,
 				5C539F101C6ABA1B00D78977 /* FirstViewController.m */,
 				5C539F151C6ABA1B00D78977 /* Main.storyboard */,
+				5C78E26C1C7B9EA1009D3F5C /* FriendDetailViewController.h */,
+				5C78E26D1C7B9EA1009D3F5C /* FriendDetailViewController.m */,
+				5C78E26E1C7B9EA1009D3F5C /* FriendTableViewController.h */,
+				5C78E26F1C7B9EA1009D3F5C /* FriendTableViewController.m */,
+				5C78E2721C7B9ED6009D3F5C /* Friend.h */,
+				5C78E2731C7B9ED6009D3F5C /* Friend.m */,
 				5C78E2661C7AB8A2009D3F5C /* FindHotelViewController.h */,
 				5C78E2671C7AB8A2009D3F5C /* FindHotelViewController.m */,
 				5C78E2691C7ABAD3009D3F5C /* FlightViewController.h */,
@@ -325,12 +340,15 @@
 			files = (
 				5C539F0E1C6ABA1B00D78977 /* AppDelegate.m in Sources */,
 				5C78E2681C7AB8A2009D3F5C /* FindHotelViewController.m in Sources */,
+				5C78E2701C7B9EA1009D3F5C /* FriendDetailViewController.m in Sources */,
 				5C78E2651C7A5062009D3F5C /* InterestTableViewController.m in Sources */,
 				5C78E25D1C7A4FB0009D3F5C /* InterestDetailViewController.m in Sources */,
 				5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */,
+				5C78E2741C7B9ED6009D3F5C /* Friend.m in Sources */,
 				5C78E25A1C7A4B3D009D3F5C /* CreateTripViewController.m in Sources */,
 				5C78E26B1C7ABAD3009D3F5C /* FlightViewController.m in Sources */,
 				5C539F111C6ABA1B00D78977 /* FirstViewController.m in Sources */,
+				5C78E2711C7B9EA1009D3F5C /* FriendTableViewController.m in Sources */,
 				5C539F4F1C6AC28000D78977 /* TableViewController.m in Sources */,
 				5C8989991C7286B300415618 /* ProfileViewController.m in Sources */,
 				5C539F0B1C6ABA1B00D78977 /* main.m in Sources */,
