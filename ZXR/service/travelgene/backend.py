@@ -49,18 +49,17 @@ def connect_mongodb_test():
 
     # zhe = mongo.db['newyorks'].find_one()
     # print zhe
-    result = mongo.db[city].find({'category' : category})[0 : int(count)]
+    result_dict = mongo.db[city].find({'category' : category})[0 : int(count)]
 
 
     # result_json = jsonify(serialize(result))
 
-    result_str = "["
-    for item in result:
-        result_str += json.dumps(item, default=json_util.default) + ","
-    result_str = result_str[:-1]
-    result_str += "]"
 
-    return '{"result" :' + result_str + "}"
+
+    for item in result_dict:
+        result_dict.append(json.dumps(item, default=json_util.default))
+
+    return '{"result" :[' + result_dict.join(",") + "]}"
 
 
 # Author: Qiankun

@@ -361,6 +361,7 @@ def parseAttractionList(url):
         res.append(parseAttraction(attraction))
         writeToFile(res, filename, f)
     f.close()
+    print str(len(titlelist)) + " length asdasdfasdfasdfadfas"
     return len(titlelist)
 
 def parseAttraction(url):
@@ -393,7 +394,7 @@ def get_attraction_img(element, res):
     top_div = element.find_all("script")
     img_url = "Unknown"
     # in script around this range
-    for i in range(70, 90):
+    for i in range(70, min(90, len(top_div))):
         part = str(top_div[i])
         if 'lazyImgs' in part:
             photo_part = part.split('lazyImgs', 1)[1]
@@ -417,7 +418,7 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g34439-Miami_Beach_Florida-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
