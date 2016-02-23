@@ -79,6 +79,7 @@
 
 
 - (IBAction)submitClicked:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"InterestViewController" sender:self];
 }
 
 

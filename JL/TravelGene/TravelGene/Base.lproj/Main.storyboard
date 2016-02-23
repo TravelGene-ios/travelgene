@@ -72,6 +72,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="signinClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PHP-4O-x4E"/>
                                     <segue destination="AsA-T6-Lx4" kind="modal" identifier="signin_page" id="U0h-lw-DS7"/>
                                 </connections>
                             </button>
@@ -93,6 +94,7 @@
                         <outlet property="txtRepeatPassword" destination="bJM-Xb-S0I" id="JJK-oE-0dH"/>
                         <outlet property="txtUsername" destination="GLm-VY-d6o" id="QEo-f6-phe"/>
                         <segue destination="H17-mS-c4q" kind="modal" identifier="register_success" id="U5N-FW-fiw"/>
+                        <segue destination="H17-mS-c4q" kind="modal" identifier="SuccessIfValid" id="LBk-3a-Q4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -253,6 +255,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="U5N-FW-fiw"/>
+        <segue reference="LBk-3a-Q4i"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -32,6 +32,7 @@
     
     flights = [NSMutableArray arrayWithObjects:@"Delta", @"American Airline", @"JetBlue", nil];
     
+
     
     //navigationItem edit button
 //    self.navigationItem.leftBarButtonItem = self.editButtonItem;

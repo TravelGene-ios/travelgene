@@ -19,16 +19,30 @@ db.on('error', function(error) {
 
 console.log('DB Connected');
 var newyorkSchema = new mongoose.Schema({
-    category       : {type : String},
-    review_count   : {type : String},
-    title          : {type : String},
-    rating_string  : {type : String}
+    category    : {type : String},
+    review_count      : {type : String},
+    name      : {type : String},
+    rating_string      : {type : String}
 
+});
+var reviewSchema = new mongoose.Schema({
+    city    : {type : String},
+    spot      : {type : String},
+    name      : {type : String},
+    content      : {type : String}
+
+});
+var EmptySchema = new mongoose.Schema({
+    title      : {type : String}
 });
 
 //Create search model to Collection "newyorks"
-var mongooseModel = db.model('newyork', newyorkSchema);
-
+//var mongooseModel = db.model('newyork', newyorkSchema);
+var mongooseModel = db.model('newyork', EmptySchema);
+var hotelModel = db.model('newyorkhotel', EmptySchema);
+var reviewModel = db.model('review', newyorkSchema);
+var reviewtestModel = db.model('reviewtest', reviewSchema);
+console.log("test");
 //--------------------------------TEST ONLY-----------------------------------
 
 //Restful Get Method, return all elements in newyorks collection TEST ONLY
@@ -74,6 +88,31 @@ app.get('/search',function(req, res){
     });
 
 })
+//Restful Get Method, return specific elements based on the query in newyorks collection  TEST ONLY
+app.get('/testjson',function(req, res){
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+
+    var city = req.query['city'];
+    var category = req.query['category'];
+    var count = req.query['count'];
+
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+    mongooseModel.find({'category': category},'-_id', function(err, docs) {
+        if (!err){
+            docs = docs.sort(function(a, b){return b.rating_string - a.rating_string})
+            var size = docs.length > count ? count : docs.length
+            console.log(size);
+            doc = [];
+            for (i = 0; i < size; i++) {
+                doc[i] = docs[i];
+            }
+            obj = new Object;
+            obj ={"result":doc}
+            res.send(obj);
+        } else {throw err;}
+    });
+
+})
 
 //--------------------------------PRODUCTION-----------------------------------
 
@@ -90,12 +129,14 @@ app.get('/exit',function(req, res){
     process.exit();
 })
 
+
+//-------------------------- Queries for Yancheng Liu to use  -------------------
 /*
- * Query for Yancheng Liu to use
  * INPUT: City, Category, Count
  * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
  * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=spot&city=newyork
  */
+
 app.get('/searchlyc',function(req, res){
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
 
@@ -104,7 +145,7 @@ app.get('/searchlyc',function(req, res){
     var count = req.query['count'];
 
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
-    mongooseModel.find({'category': category}, function(err, docs) {
+    mongooseModel.find({'category': category},'-_id', function(err, docs) {
         if (!err){
             docs = docs.sort(function(a, b){return b.rating_string - a.rating_string})
             var size = docs.length > count ? count : docs.length
@@ -113,10 +154,112 @@ app.get('/searchlyc',function(req, res){
             for (i = 0; i < size; i++) {
                 doc[i] = docs[i];
             }
-            res.send(doc);
+            obj = new Object;
+            obj ={"result":doc}
+            res.send(obj);
         } else {throw err;}
     });
 })
+
+
+
+
+//-------------------------- Queries for Chenyang Ran to use  -------------------
+/*
+ * INPUT: City, Category, Count
+ * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=spot&city=newyork
+ */
+app.get('/searchcyr',function(req, res){
+    //res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+
+    var spot = req.query['spot'];
+    var count = req.query['count'];
+    console.log("ok");
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+    reviewtestModel.find({'spot': spot},'-_id', function(err, docs) {
+        //mongooseModel.find({},function(err, docs) {
+        if (!err){
+            
+            var size = docs.length > count ? count : docs.length
+            console.log(size);
+            doc = [];
+            for (i = 0; i < size; i++) {
+                doc[i] = docs[i];       
+            }
+            obj = new Object;
+            obj ={"result":doc}
+            res.send(obj);
+            //res.send(doc);
+        } else {throw err;}
+    });
+})
+
+/*
+ * INPUT: City, Category, Count
+ * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8080/insertreview?count=1&spot=card2&city=newyork&name=peter&content=jajajaja
+ */
+app.get('/insertreview',function(req, res){
+
+    var spot = req.query['spot'];
+    var city = req.query['city'];
+    var name = req.query['name'];
+    var content = req.query['content'];
+
+    var thor = new reviewtestModel({
+        spot: spot,
+        city: city, 
+        name: name,
+        content: content
+    });
+
+    thor.save(function(err, thor) {
+        if (err) return console.error(err);
+        console.log(thor);
+    });
+    console.log("ok");
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+    res.send("ok");
+})
+
+
+
+//-------------------------- Queries for Zhiyue Liu to use  -------------------
+/*
+ * INPUT: City, Category, Count
+ * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=hotel&city=newyork
+ */
+app.get('/searchhotel',function(req, res){
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+
+    var city = req.query['city'];
+    var category = req.query['category'];
+    var count = req.query['count'];
+
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+    hotelModel.find({'category': category},'-_id', function(err, docs) {
+        if (!err){
+            docs = docs.sort(function(a, b){return b.rating_string - a.rating_string})
+            var size = docs.length > count ? count : docs.length
+            console.log(size);
+            doc = [];
+            for (i = 0; i < size; i++) {
+                doc[i] = docs[i];
+            }
+            obj = new Object;
+            obj ={"result":doc}
+            res.send(obj);
+        } else {throw err;}
+    });
+})
+
+
+
+
+
+
 
 console.log("Server is starting on port 8888");
 app.listen(8888);

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface InterestTableViewController : UITableViewController
-
+- (IBAction)touchNextBtn:(id)sender;
 @end
