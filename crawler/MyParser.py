@@ -293,8 +293,6 @@ def get_restuarant_img(element, res):
         img_div_s=img_div.find("img",attrs={"id":"HERO_PHOTO"})
         if img_div_s:
             img_url = img_div_s['src']
-
-
     print img_url
     res['img_url']=str(img_url)
 
@@ -374,6 +372,7 @@ def parseAttraction(url):
     get_attraction_address(soup,res)
     get_reviews(soup,res)
     get_ratings(soup,res)
+    get_attraction_img(soup, res)
     res['category'] = "spot"
     # print "title  " + res['title']
     print url
@@ -390,15 +389,19 @@ def get_attraction_address(element,res):
         res['address'] = "Unknown"
 
 def get_attraction_img(element, res):
-    img_url=""
-    img_div=element.find("div",attrs={"class":"flexible_photos"})
-    # print img_div
-    if img_div:
-        img_url=img_div.find("img",attrs={"id":"HERO_PHOTO"})['src']
-        print img_url
-    else:
-        img_url = "Unknown"
-    res['img_url']=str(img_url)
+    # analyze js
+    top_div = element.find_all("script")
+    img_url = "Unknown"
+    # in script around this range
+    for i in range(70, 90):
+        part = str(top_div[i])
+        if 'lazyImgs' in part:
+            photo_part = part.split('lazyImgs', 1)[1]
+            if 'HERO_PHOTO' in photo_part:
+                img_url = photo_part.split('HERO_PHOTO', 1)[0].split('{"data":"')[-1].split('","')[0]
+                print img_url
+
+    res['img_url']= img_url
 
 def writeToFile(res, filename, f):
 
@@ -414,7 +417,7 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g31352-Sedona_Arizona-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
@@ -440,18 +443,18 @@ if __name__ == "__main__":
         # soup = dump_url(page)
         # parse_page(soup)
 
-    while True:
-        if parseHotelList(urlqueue[0])!=0:
-            break
-        print 'try again'
+    # while True:
+    #     if parseHotelList(urlqueue[0])!=0:
+    #         break
+    #     print 'try again'
 
 
 
     parseAttractionList(urlqueue[2])
 
     #
-    while True:
-        if parseRestaurantList(urlqueue[3]):
-            break
-        print 'try again'
+    # while True:
+    #     if parseRestaurantList(urlqueue[3]):
+    #         break
+    #     print 'try again'
 
