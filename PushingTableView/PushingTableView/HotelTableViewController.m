@@ -8,13 +8,20 @@
 
 #import "HotelTableViewController.h"
 #import "HotelDetailsViewController.h"
+#import "Hotel.h"
 @interface HotelTableViewController ()
 
 @end
 
 @implementation HotelTableViewController{
-    NSMutableArray * hotels;
+    NSMutableArray * hotel_titles;
+    NSMutableArray * hotel_addresses;
+    NSMutableArray * hotel_imgs;
+    NSMutableArray * hotel_review_cnts;
+    NSMutableArray * hotel_ratings;
+    
 }
+
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -29,7 +36,67 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    hotels = [NSMutableArray arrayWithObjects:@"Westin", @"Sheraton", @"Quarter Club", nil];
+    
+    //Example: return the top 2 sopt in New York City
+    NSString* path  = @"http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=spot&city=newyork";
+    NSURL* url = [NSURL URLWithString:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    NSData* jsonData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary* dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    NSArray* arrayResult =[dic objectForKey:@"result"];
+    //arrayResult is a NSArray saving the JSON data. Each element is one row in database. You could find the detail of arrayResult by using the commented code in the next line
+//    NSLog(@"%@", arrayResult);
+    
+    //Example: Get the first element of the JSON and print the title of it
+    
+//    NSDictionary* review_list = [resultDic objectForKey:@"review_list"];
+//    NSLog(@"review_list in first element: %@", review_list);
+//    NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+//    NSLog(@"resultDic:%@", resultDic);
+    
+    
+//    NSString * tmp = @"Westin";
+    if(!hotel_titles){
+        hotel_titles = [[NSMutableArray alloc] init];
+    }
+    if(!hotel_imgs){
+        hotel_imgs = [[NSMutableArray alloc] init];
+    }
+    if(!hotel_addresses){
+        hotel_addresses = [[NSMutableArray alloc] init];
+    }
+    
+    if(!hotel_review_cnts){
+        hotel_review_cnts = [[NSMutableArray alloc] init];
+    }
+    if(!hotel_ratings){
+        hotel_ratings = [[NSMutableArray alloc] init];
+    }
+    for (int i=0; i<2; i++) {
+//        int questionID=i;
+        NSDictionary* resultDic = [arrayResult objectAtIndex:i];
+        NSString* hotel_title = [resultDic objectForKey:@"title"];
+        NSString* hotel_addr = [resultDic objectForKey:@"address"];
+        NSString* hotel_img_url = [resultDic objectForKey:@"img_url"];
+//        Question* hotel=[[Question alloc]init];
+//        question.questionID=questionID;
+//        question.text=[NSString stringWithFormat:@"text %d",i];
+        [hotel_titles addObject:hotel_title];//hotel_title];
+        [hotel_addresses addObject:hotel_addr];
+        [hotel_imgs addObject:@"http://media-cdn.tripadvisor.com/media/photo-w/09/d3/f4/49/exterior.jpg"]; //hotel_img_url
+        [hotel_review_cnts addObject:[resultDic objectForKey:@"review_count"]];
+        [hotel_ratings addObject:[resultDic objectForKey:@"rating_string"]];
+        
+//        [question release];
+        
+        
+        
+    }
+    
+//    [hotels addObject:tmp];
+    
+    
+//    hotels = [NSMutableArray arrayWithObjects:@"Westin", @"Sheraton", @"Quarter Club", nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,7 +122,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [hotels count];
+    return [hotel_titles count];
 }
 
 
@@ -69,7 +136,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
-    cell.textLabel.text = [hotels objectAtIndex:indexPath.row];
+    cell.textLabel.text = [hotel_titles objectAtIndex:indexPath.row];
     return cell;
 }
 
@@ -123,7 +190,13 @@
     if([segue.identifier isEqualToString:@"showHotelDetail"]){
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         HotelDetailsViewController *destController = segue.destinationViewController;
-        destController.hotelName = [hotels objectAtIndex:indexPath.row];
+        destController.hotelName = [hotel_titles objectAtIndex:indexPath.row];
+        destController.hotelAddr = [hotel_addresses objectAtIndex:indexPath.row];
+        destController.hotelImg = [hotel_imgs objectAtIndex:indexPath.row];
+        destController.reviewCnt= [hotel_review_cnts objectAtIndex:indexPath.row];
+        destController.hotelRating = [hotel_ratings objectAtIndex:indexPath.row];
+        NSLog(@"%@", [hotel_review_cnts objectAtIndex:indexPath.row]);
+        NSLog(@"%@", [hotel_ratings objectAtIndex:indexPath.row]);
         destController.title = destController.hotelName;
     }
 }

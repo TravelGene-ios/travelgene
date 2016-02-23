@@ -35,6 +35,20 @@
               @"nice price",
               @"good location", nil];
     // Do any additional setup after loading the view.
+//    UIImageView *hotelImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    NSURL *image_url = [NSURL URLWithString:self.hotelImg];
+    NSData *img_data = [[NSData alloc] initWithContentsOfURL:image_url];
+    UIImage *hotelImage = [[UIImage alloc] initWithData:img_data];
+    
+    self.hotel_image_view.image = hotelImage;
+    self.hotel_address_label.text = self.hotelAddr;
+    self.rating_label.text = self.hotelRating;
+    self.review_cnt_label.text = self.reviewCnt;
+//    NSLog(@"%@",self.hotel_address_label.text);
+    
+    
+//    hotelImage.image = [UIImage data:[self.hotelImg]];
+//    [self.view addSubview:hotelImage];
 
 
 }
@@ -69,6 +83,7 @@
     cell.textLabel.text = [hotelReviews objectAtIndex:indexPath.row];
 //    cell.indentationLevel = 2;
     cell.detailTextLabel.text = [reviewDetails objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
