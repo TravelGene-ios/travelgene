@@ -54,12 +54,12 @@ def connect_mongodb_test():
 
     # result_json = jsonify(serialize(result))
 
-
+    result_list = []
 
     for item in result_dict:
-        result_dict.append(json.dumps(item, default=json_util.default))
+        result_list.append(json.dumps(item, default=json_util.default))
 
-    return '{"result" :[' + result_dict.join(",") + "]}"
+    return '{"result" :[' + ",".join(result_list) + "]}"
 
 
 # Author: Qiankun

@@ -7,7 +7,7 @@ scp /Users/lubron/Documents/Course/Capstone/travelgene/crawler/MyParser.py trave
 scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/New\ York/
 
 
-scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/5/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/San Francisco, California/
+scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/15/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/Branson/
 
 
 
@@ -30,6 +30,10 @@ ssh -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem  ec2-user@ec2-52-9
 scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/
 
 scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service/travelgene/monkapi.py ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/service/travelgene/
+
+
+scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service/travelgene/backend.py ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/service/travelgene/
+
 
 
 scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service/travelgene/pymonk-master/monk/core/crane.py ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/service/travelgene/pymonk-master/monk/core/
