@@ -35,11 +35,18 @@ var reviewSchema = new mongoose.Schema({
 var EmptySchema = new mongoose.Schema({
     title      : {type : String}
 });
+var newyorkHotelSchema = new mongoose.Schema({
+    category    : {type : String},
+    review_count      : {type : String},
+    name      : {type : String},
+    rating_string      : {type : String}
 
+});
 
 var mongooseModel = db.model('newyork', EmptySchema);
 var newyorkModel = db.model('newyork', EmptySchema);
-var hotelModel = db.model('newyorkhotel', EmptySchema);
+var hotelModel = db.model('newyorkhotel', newyorkHotelSchema);
+var restModel = db.model('newyorkrestaurant', newyorkHotelSchema);
 var reviewModel = db.model('review', newyorkSchema);
 var reviewtestModel = db.model('reviewtest', reviewSchema);
 
@@ -240,6 +247,36 @@ app.get('/searchhotel',function(req, res){
 
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
     hotelModel.find({'category': category},'-_id', function(err, docs) {
+        if (!err){
+            docs = docs.sort(function(a, b){return parseFloat(b.rating_string) - parseFloat(a.rating_string)})
+            var size = docs.length > count ? count : docs.length
+            console.log(size);
+            doc = [];
+            for (i = 0; i < size; i++) {
+                doc[i] = docs[i];
+                console.log(docs[i].rating_string);
+            }
+            obj = new Object;
+            obj ={"result":doc}
+            res.send(obj);
+        } else {throw err;}
+    });
+})
+
+/*
+ * INPUT: City, Count
+ * OUTPUT: TOP count  in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&city=newyork
+ */
+app.get('/searchrestaurant',function(req, res){
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+
+    var city = req.query['city'];
+    var category = 'restaurant';
+    var count = req.query['count'];
+
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+    restModel.find({'category': category},'-_id', function(err, docs) {
         if (!err){
             docs = docs.sort(function(a, b){return parseFloat(b.rating_string) - parseFloat(a.rating_string)})
             var size = docs.length > count ? count : docs.length

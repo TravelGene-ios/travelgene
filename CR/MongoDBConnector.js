@@ -35,13 +35,23 @@ var reviewSchema = new mongoose.Schema({
 var EmptySchema = new mongoose.Schema({
     title      : {type : String}
 });
+var newyorkHotelSchema = new mongoose.Schema({
+    category    : {type : String},
+    review_count      : {type : String},
+    name      : {type : String},
+    rating_string      : {type : String}
 
-//Create search model to Collection "newyorks"
-//var mongooseModel = db.model('newyork', newyorkSchema);
+});
+
 var mongooseModel = db.model('newyork', EmptySchema);
-var hotelModel = db.model('newyorkhotel', EmptySchema);
+var newyorkModel = db.model('newyork', EmptySchema);
+var hotelModel = db.model('newyorkhotel', newyorkHotelSchema);
+var restModel = db.model('newyorkrestaurant', newyorkHotelSchema);
 var reviewModel = db.model('review', newyorkSchema);
 var reviewtestModel = db.model('reviewtest', reviewSchema);
+
+
+
 console.log("test");
 //--------------------------------TEST ONLY-----------------------------------
 
@@ -153,6 +163,7 @@ app.get('/searchlyc',function(req, res){
             doc = [];
             for (i = 0; i < size; i++) {
                 doc[i] = docs[i];
+                console.log(docs[i].rating_string);
             }
             obj = new Object;
             obj ={"result":doc}
@@ -170,17 +181,13 @@ app.get('/searchlyc',function(req, res){
  * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
  * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=spot&city=newyork
  */
-app.get('/searchcyr',function(req, res){
-    //res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+app.get('/searchreviews',function(req, res){
 
     var spot = req.query['spot'];
     var count = req.query['count'];
-    console.log("ok");
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
     reviewtestModel.find({'spot': spot},'-_id', function(err, docs) {
-        //mongooseModel.find({},function(err, docs) {
-        if (!err){
-            
+        if (!err){           
             var size = docs.length > count ? count : docs.length
             console.log(size);
             doc = [];
@@ -227,26 +234,27 @@ app.get('/insertreview',function(req, res){
 
 //-------------------------- Queries for Zhiyue Liu to use  -------------------
 /*
- * INPUT: City, Category, Count
- * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
- * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=hotel&city=newyork
+ * INPUT: City, Count
+ * OUTPUT: TOP count  in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&city=newyork
  */
 app.get('/searchhotel',function(req, res){
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
 
     var city = req.query['city'];
-    var category = req.query['category'];
+    var category = 'hotel';
     var count = req.query['count'];
 
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
     hotelModel.find({'category': category},'-_id', function(err, docs) {
         if (!err){
-            docs = docs.sort(function(a, b){return b.rating_string - a.rating_string})
+            docs = docs.sort(function(a, b){return parseFloat(b.rating_string) - parseFloat(a.rating_string)})
             var size = docs.length > count ? count : docs.length
             console.log(size);
             doc = [];
             for (i = 0; i < size; i++) {
                 doc[i] = docs[i];
+                console.log(docs[i].rating_string);
             }
             obj = new Object;
             obj ={"result":doc}
@@ -254,6 +262,38 @@ app.get('/searchhotel',function(req, res){
         } else {throw err;}
     });
 })
+
+/*
+ * INPUT: City, Count
+ * OUTPUT: TOP count  in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&city=newyork
+ */
+app.get('/searchrestaurant',function(req, res){
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+
+    var city = req.query['city'];
+    var category = 'restaurant';
+    var count = req.query['count'];
+
+    res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
+    restModel.find({'category': category},'-_id', function(err, docs) {
+        if (!err){
+            docs = docs.sort(function(a, b){return parseFloat(b.rating_string) - parseFloat(a.rating_string)})
+            var size = docs.length > count ? count : docs.length
+            console.log(size);
+            doc = [];
+            for (i = 0; i < size; i++) {
+                doc[i] = docs[i];
+                console.log(docs[i].rating_string);
+            }
+            obj = new Object;
+            obj ={"result":doc}
+            res.send(obj);
+        } else {throw err;}
+    });
+})
+
+
 
 
 
