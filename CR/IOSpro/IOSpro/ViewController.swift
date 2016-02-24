@@ -10,15 +10,14 @@ import UIKit
 
 
 class ViewController: UIViewController{
-    let url = "http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchcyr?count=3&spot=card&city=newyork"
     var index = 0;
-    var name: [String] = ["Tina Li","QiQi Shi","Yancheng Liu"];
-    var review: [String] = ["This place is great! I love it","This place is great! I also love it","This place is bullshit"];
-    //var yourArray = [String]();
+    //test only
+    var name_test: [String] = ["Tina Li","QiQi Shi","Yancheng Liu"];
+    var review_test: [String] = ["This place is great! I love it","This place is great! I also love it","This place is bullshit"];
     var tag = 0;
     
-    var name2 = [String]();
-    var review2 = [String]();
+    var name = [String]();
+    var review = [String]();
     
     @IBOutlet weak var pic: UIImageView!
 
@@ -29,31 +28,16 @@ class ViewController: UIViewController{
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         getData()
         
         while (tag == 0) {continue}
-        //println("aaa")
-        //println(yourArray)
-        
-        //let initIdentifier = "Cell"
-        let cell = tableView.dequeueReusableCellWithIdentifier( "Cell", forIndexPath: indexPath) as UITableViewCell
 
-        //cell.textLabel?.text = name[indexPath.row]
-        println(indexPath.row)
-        cell.textLabel?.text = name2[indexPath.row]
-        cell.detailTextLabel?.text = review2[indexPath.row]
-        /*
         let cell = tableView.dequeueReusableCellWithIdentifier( "Cell", forIndexPath: indexPath) as UITableViewCell
-        
         cell.textLabel?.text = name[indexPath.row]
-        //println(indexPath.row)
-        //cell.textLabel?.text = yourArray[indexPath.row]
         cell.detailTextLabel?.text = review[indexPath.row]
-        */
         return cell
     }
     
@@ -61,15 +45,13 @@ class ViewController: UIViewController{
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         getData()
-        
         while (tag == 0) {continue}
-        //return yourArray.count
-        
-        return name2.count
+        return name.count
     }
-    
+    /*
+     * get review data from mongodb
+     */
     func getData(){
         if (self.tag == 1) {
             return
@@ -83,22 +65,17 @@ class ViewController: UIViewController{
                 if let results = json["result"] as? NSArray{
                     for var index = 0; index < results.count; ++index {
                         if let result = results[index] as? NSDictionary{
-                            //println(result)
                             if let name = result["name"] as? String{
                                 println(name)
-                                self.name2.append(name)
-                                
+                                self.name.append(name)
                             }
                             if let rev = result["content"] as? String{
                                 println(rev)
-                                self.review2.append(rev)
-                                
+                                self.review.append(rev)
                             }
                         }
                     }
                     self.tag = 1
-                    
-                    
                 }
             }
         })
