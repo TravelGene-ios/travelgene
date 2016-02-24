@@ -11,6 +11,8 @@
 @interface InterestDetailViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (nonatomic,strong) NSString *interestName;
+@property (nonatomic,strong) NSString *localrate;
+@property (nonatomic,strong) NSString *localaddress;
 @property (weak, nonatomic) IBOutlet UICollectionView *myPictureCollectionView;
 @property (weak, nonatomic) IBOutlet UITextField *rate;
 @property (weak, nonatomic) IBOutlet UITextField *address;

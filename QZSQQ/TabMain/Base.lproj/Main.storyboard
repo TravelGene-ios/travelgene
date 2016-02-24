@@ -218,6 +218,7 @@
                         <outlet property="departDate" destination="ciK-Dv-PLI" id="a4w-jd-Q9A"/>
                         <outlet property="destination" destination="KKA-WR-tbB" id="0sr-Dv-kIA"/>
                         <outlet property="returnDate" destination="zOs-dC-cJy" id="c6a-1t-RDG"/>
+                        <outlet property="segment" destination="05j-ee-Fe0" id="P3r-dq-TMu"/>
                         <segue destination="krc-JK-sOy" kind="show" identifier="InterestViewController" id="AOB-cU-Hl4"/>
                     </connections>
                 </viewController>

@@ -12,6 +12,7 @@
     UIDatePicker *datePicker;
     UIDatePicker *returnDatePicker;
 }
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITextField *destination;
 @property (weak, nonatomic) IBOutlet UITextField *departDate;
 @property (weak, nonatomic) IBOutlet UITextField *returnDate;

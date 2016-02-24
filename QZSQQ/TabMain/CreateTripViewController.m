@@ -6,8 +6,11 @@
 //  Copyright © 2016 Qiankun Zhuang. All rights reserved.
 //
 
+//modify: Qiqi
+
 #import "CreateTripViewController.h"
 #import "InterestTableViewController.h"
+
 
 @interface CreateTripViewController ()
 
@@ -104,20 +107,27 @@
         UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You should change your return date" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [error show];
     }else{
-        InterestTableViewController *wc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"InterestTableViewController"];
+        [self performSegueWithIdentifier:@"InterestViewController" sender:self];
     }
 }
 
-
-
-/*
-#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqualToString:@"InterestViewController"]){
+        InterestTableViewController *destViewController=segue.destinationViewController;
+        destViewController.destination=_destination.text;
+        destViewController.startDate=datePicker.date;
+        destViewController.endDate=returnDatePicker.date;
+        if ([[_segment titleForSegmentAtIndex:_segment.selectedSegmentIndex] isEqualToString:@"3+"]){
+            destViewController.groupnumber=3;
+        }else{
+        destViewController.groupnumber=[[_segment titleForSegmentAtIndex:_segment.selectedSegmentIndex] intValue];
+        }
+    }
 }
-*/
 
 @end
