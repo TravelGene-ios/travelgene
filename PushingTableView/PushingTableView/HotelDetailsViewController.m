@@ -7,13 +7,14 @@
 //
 
 #import "HotelDetailsViewController.h"
+#import "HotelDetailReviewsViewController.h"
 
 @interface HotelDetailsViewController ()
 
 @end
 
 @implementation HotelDetailsViewController{
-    NSMutableArray * hotelReviews;
+    NSMutableArray * hotelDetailReviews;
     NSMutableArray * reviewDetails;
 }
 
@@ -29,11 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    hotelReviews = [NSMutableArray arrayWithObjects:@"Claire", @"Jing", @"Qiqi", nil];
-    reviewDetails = [NSMutableArray arrayWithObjects:
-              @"comportable night",
-              @"nice price",
-              @"good location", nil];
+    
     // Do any additional setup after loading the view.
 //    UIImageView *hotelImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
     NSURL *image_url = [NSURL URLWithString:self.hotelImg];
@@ -44,11 +41,25 @@
     self.hotel_address_label.text = self.hotelAddr;
     self.rating_label.text = self.hotelRating;
     self.review_cnt_label.text = self.reviewCnt;
-//    NSLog(@"%@",self.hotel_address_label.text);
+    
+    
+    NSArray * hotelReviewsArray = self.hotelReviews;
     
     
 //    hotelImage.image = [UIImage data:[self.hotelImg]];
 //    [self.view addSubview:hotelImage];
+    if(!hotelDetailReviews){
+        hotelDetailReviews = [[NSMutableArray alloc] init];
+    }
+
+    for (int i=0; i<[hotelReviewsArray count]; i++) {
+        [hotelDetailReviews addObject:[hotelReviewsArray objectAtIndex:i]];
+    }
+//    hotelReviews = [NSMutableArray arrayWithObjects:@"Claire", @"Jing", @"Qiqi", nil];
+//    reviewDetails = [NSMutableArray arrayWithObjects:
+//                     @"comportable night",
+//                     @"nice price",
+//                     @"good location", nil];
 
 
 }
@@ -64,7 +75,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [hotelReviews count];
+    return [hotelDetailReviews count];
 }
 
 - (CGFloat)tableView: (UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,15 +91,18 @@
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:simpleTableIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    cell.textLabel.text = [hotelReviews objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[hotelDetailReviews objectAtIndex:indexPath.row] substringFromIndex:5 ]; //TODO
+
+//    NSLog(@"%@",[hotelDetailReviews objectAtIndex:indexPath.row]);
+    
 //    cell.indentationLevel = 2;
-    cell.detailTextLabel.text = [reviewDetails objectAtIndex:indexPath.row];
+//    cell.detailTextLabel.text = [reviewDetails objectAtIndex:indexPath.row];
     
     return cell;
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -96,7 +110,14 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"showHotelReviewDetails"]){
+        NSIndexPath *indexPath = [self.review_table_view indexPathForSelectedRow];
+        HotelDetailReviewsViewController *destController = segue.destinationViewController;
+        destController.review_text = [hotelDetailReviews objectAtIndex:indexPath.row];
+        
+        destController.title =  @"Review Details";
+    }
 }
-*/
+
 
 @end

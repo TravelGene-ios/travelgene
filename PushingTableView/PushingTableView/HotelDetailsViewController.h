@@ -15,9 +15,12 @@
 
 @property (nonatomic, strong) NSString *reviewCnt;
 @property (nonatomic, strong) NSString *hotelRating;
+@property (nonatomic, strong) NSArray *hotelReviews;
+
 @property (weak, nonatomic) IBOutlet UIImageView *hotel_image_view;
 @property (weak, nonatomic) IBOutlet UILabel *hotel_address_label;
 @property (weak, nonatomic) IBOutlet UILabel *review_cnt_label;
 @property (weak, nonatomic) IBOutlet UILabel *rating_label;
+@property (weak, nonatomic) IBOutlet UITableView *review_table_view;
 
 @end
