@@ -301,5 +301,5 @@ app.get('/searchrestaurant',function(req, res){
 
 
 
-console.log("Server is starting on port 8888");
-app.listen(8888);
+console.log("Server is starting on port 8080");
+app.listen(8080);

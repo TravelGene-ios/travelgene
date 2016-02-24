@@ -18,11 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(40, 70, 250, 50)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(80, 50, 250, 150)];
     label.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth|
     UIViewAutoresizingFlexibleBottomMargin;
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = [NSString stringWithFormat:@"Trip Detail:%@", data]; // Make use of the exposed data property
+    label.text = [NSString stringWithFormat:@"Trip description:%@", data.desp];
     [self.view addSubview:label];
 }
 

@@ -5,6 +5,8 @@ import flask_debugtoolbar
 from travelgene import app
 from flask_debugtoolbar import DebugToolbarExtension
 from flask.ext.cors import CORS
+from bson import json_util
+import json
 
 import monkapi
 import testmonk
@@ -35,18 +37,29 @@ def hello_world():
     # print mongo.db.Seattle.find_one()
     return "abc"
 
-@app.route('/mongodb_connection_test',methods=['POST'])
+@app.route('/mongodb_connection_test',methods=['GET'])
 def connect_mongodb_test():
     # print app.name
 
-    city = request.form['city']
-    category = request.form['category']
-    count = request.form['count']
+    city = request.args.get('city')
+
+    category = request.args.get('category')
+    count = request.args.get('count')
+    print city, category, count
+
+    # zhe = mongo.db['newyorks'].find_one()
+    # print zhe
+    result_dict = mongo.db[city].find({'category' : category})[0 : int(count)]
 
 
-    result = mongo.db['newyorks'].find_one({'category' : category, 'city' : city, 'count' : count})
+    # result_json = jsonify(serialize(result))
 
-    return result
+    result_list = []
+
+    for item in result_dict:
+        result_list.append(json.dumps(item, default=json_util.default))
+
+    return '{"result" :[' + ",".join(result_list) + "]}"
 
 
 # Author: Qiankun

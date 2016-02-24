@@ -10,4 +10,8 @@
 
 @interface TableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *tripArray;
+
+-(void) retrieveData;
+
 @end
