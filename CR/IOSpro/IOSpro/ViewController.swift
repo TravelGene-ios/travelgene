@@ -14,8 +14,12 @@ class ViewController: UIViewController{
     var index = 0;
     var name: [String] = ["Tina Li","QiQi Shi","Yancheng Liu"];
     var review: [String] = ["This place is great! I love it","This place is great! I also love it","This place is bullshit"];
-    var yourArray = [String]();
+    //var yourArray = [String]();
     var tag = 0;
+    
+    var name2 = [String]();
+    var review2 = [String]();
+    
     @IBOutlet weak var pic: UIImageView!
 
     @IBOutlet weak var reviews: UITableView!
@@ -32,18 +36,24 @@ class ViewController: UIViewController{
         getData()
         
         while (tag == 0) {continue}
-        println("aaa")
-        println(yourArray)
+        //println("aaa")
+        //println(yourArray)
         
         //let initIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier( "Cell", forIndexPath: indexPath) as UITableViewCell
 
         //cell.textLabel?.text = name[indexPath.row]
         println(indexPath.row)
-        cell.textLabel?.text = yourArray[indexPath.row]
-        //cell.detailTextLabel?.text = review[indexPath.row]
+        cell.textLabel?.text = name2[indexPath.row]
+        cell.detailTextLabel?.text = review2[indexPath.row]
+        /*
+        let cell = tableView.dequeueReusableCellWithIdentifier( "Cell", forIndexPath: indexPath) as UITableViewCell
         
-        
+        cell.textLabel?.text = name[indexPath.row]
+        //println(indexPath.row)
+        //cell.textLabel?.text = yourArray[indexPath.row]
+        cell.detailTextLabel?.text = review[indexPath.row]
+        */
         return cell
     }
     
@@ -51,11 +61,13 @@ class ViewController: UIViewController{
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         getData()
         
         while (tag == 0) {continue}
-        return yourArray.count
+        //return yourArray.count
+        
+        return name2.count
     }
     
     func getData(){
@@ -63,27 +75,30 @@ class ViewController: UIViewController{
             return
         }
         let session = NSURLSession.sharedSession()
-        let request = NSURLRequest(URL: NSURL(string: "http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchcyr?count=3&spot=card&city=newyork"))
+        let request = NSURLRequest(URL: NSURL(string: "http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchreviews?count=4&spot=card2&city=newyork"))
         let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
             var err: NSError
             let jsonResult: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
             if let json = jsonResult as? NSDictionary{
                 if let results = json["result"] as? NSArray{
-                    if let result = results[0] as? NSDictionary{
-                        if let review_list = result["review_list"] as? NSArray{
-                            //let i = 0
-                            for var index = 0; index < review_list.count; ++index {
-                                if let ele = review_list[index] as? NSDictionary{
-                                    if let name = ele["name"] as? String{
-                                        println(name)
-                                        self.yourArray.append(name)
-                                        
-                                    }
-                                }
+                    for var index = 0; index < results.count; ++index {
+                        if let result = results[index] as? NSDictionary{
+                            //println(result)
+                            if let name = result["name"] as? String{
+                                println(name)
+                                self.name2.append(name)
+                                
                             }
-                            self.tag = 1
+                            if let rev = result["content"] as? String{
+                                println(rev)
+                                self.review2.append(rev)
+                                
+                            }
                         }
                     }
+                    self.tag = 1
+                    
+                    
                 }
             }
         })

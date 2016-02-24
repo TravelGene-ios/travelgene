@@ -220,6 +220,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="textField" destination="T04-Nj-r53" id="5o2-6b-6kf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHv-Dj-zT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
