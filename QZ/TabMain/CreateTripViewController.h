@@ -10,11 +10,10 @@
 @interface CreateTripViewController : UIViewController<UITextFieldDelegate>
 {
     UIDatePicker *datePicker;
-    UIDatePicker *seconddata;
+    UIDatePicker *returnDatePicker;
 }
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 @property (weak, nonatomic) IBOutlet UITextField *destination;
 @property (weak, nonatomic) IBOutlet UITextField *departDate;
-
 @property (weak, nonatomic) IBOutlet UITextField *returnDate;
-- (IBAction)submit:(UIButton *)sender;
 @end

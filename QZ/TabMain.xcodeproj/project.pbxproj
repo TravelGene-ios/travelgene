@@ -18,11 +18,20 @@
 		5C539F511C6AC2BB00D78977 /* _Images in Resources */ = {isa = PBXBuildFile; fileRef = 5C539F501C6AC2BB00D78977 /* _Images */; };
 		5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C539F551C6AD82E00D78977 /* TripDetailViewController.m */; };
 		5C5C5CEE1C7CF309000C9F0D /* MainPageTripCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C5C5CED1C7CF309000C9F0D /* MainPageTripCell.m */; };
+		5C75A3261C7EB8E90040D333 /* HotelDetailReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3171C7EB8E90040D333 /* HotelDetailReviewsViewController.m */; };
+		5C75A3271C7EB8E90040D333 /* HotelDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3191C7EB8E90040D333 /* HotelDetailsViewController.m */; };
+		5C75A3281C7EB8E90040D333 /* HotelTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A31B1C7EB8E90040D333 /* HotelTableViewController.m */; };
+		5C75A3291C7EB8E90040D333 /* RestaurantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A31D1C7EB8E90040D333 /* RestaurantDetailsViewController.m */; };
+		5C75A32A1C7EB8E90040D333 /* RestaurantReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A31F1C7EB8E90040D333 /* RestaurantReviewDetailViewController.m */; };
+		5C75A32B1C7EB8E90040D333 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3211C7EB8E90040D333 /* RestaurantTableViewController.m */; };
+		5C75A32C1C7EB8E90040D333 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3231C7EB8E90040D333 /* RootTableViewController.m */; };
+		5C75A32D1C7EB8E90040D333 /* TripOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3251C7EB8E90040D333 /* TripOverviewViewController.m */; };
+		5C75A3321C7EBA250040D333 /* FlightDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3311C7EBA250040D333 /* FlightDetailTableViewController.m */; };
+		5C75A3351C7EBA540040D333 /* FlightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3341C7EBA540040D333 /* FlightTableViewCell.m */; };
+		5C75A33A1C7EBD190040D333 /* InterestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3371C7EBD190040D333 /* InterestDetailViewController.m */; };
+		5C75A33B1C7EBD190040D333 /* InterestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C75A3391C7EBD190040D333 /* InterestTableViewController.m */; };
 		5C78E25A1C7A4B3D009D3F5C /* CreateTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */; };
-		5C78E25D1C7A4FB0009D3F5C /* InterestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E25C1C7A4FB0009D3F5C /* InterestDetailViewController.m */; };
 		5C78E2621C7A4FE7009D3F5C /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2601C7A4FE7009D3F5C /* Cell.m */; };
-		5C78E2651C7A5062009D3F5C /* InterestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */; };
-		5C78E2681C7AB8A2009D3F5C /* FindHotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E2671C7AB8A2009D3F5C /* FindHotelViewController.m */; };
 		5C78E26B1C7ABAD3009D3F5C /* FlightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E26A1C7ABAD3009D3F5C /* FlightViewController.m */; };
 		5C78E2701C7B9EA1009D3F5C /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E26D1C7B9EA1009D3F5C /* FriendDetailViewController.m */; };
 		5C78E2711C7B9EA1009D3F5C /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C78E26F1C7B9EA1009D3F5C /* FriendTableViewController.m */; };
@@ -69,16 +78,34 @@
 		5C539F551C6AD82E00D78977 /* TripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripDetailViewController.m; sourceTree = "<group>"; };
 		5C5C5CED1C7CF309000C9F0D /* MainPageTripCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPageTripCell.m; sourceTree = "<group>"; };
 		5C5C5CEF1C7CF319000C9F0D /* MainPageTripCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageTripCell.h; sourceTree = "<group>"; };
+		5C75A3161C7EB8E90040D333 /* HotelDetailReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailReviewsViewController.h; sourceTree = "<group>"; };
+		5C75A3171C7EB8E90040D333 /* HotelDetailReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailReviewsViewController.m; sourceTree = "<group>"; };
+		5C75A3181C7EB8E90040D333 /* HotelDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsViewController.h; sourceTree = "<group>"; };
+		5C75A3191C7EB8E90040D333 /* HotelDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsViewController.m; sourceTree = "<group>"; };
+		5C75A31A1C7EB8E90040D333 /* HotelTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelTableViewController.h; sourceTree = "<group>"; };
+		5C75A31B1C7EB8E90040D333 /* HotelTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelTableViewController.m; sourceTree = "<group>"; };
+		5C75A31C1C7EB8E90040D333 /* RestaurantDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantDetailsViewController.h; sourceTree = "<group>"; };
+		5C75A31D1C7EB8E90040D333 /* RestaurantDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantDetailsViewController.m; sourceTree = "<group>"; };
+		5C75A31E1C7EB8E90040D333 /* RestaurantReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantReviewDetailViewController.h; sourceTree = "<group>"; };
+		5C75A31F1C7EB8E90040D333 /* RestaurantReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantReviewDetailViewController.m; sourceTree = "<group>"; };
+		5C75A3201C7EB8E90040D333 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
+		5C75A3211C7EB8E90040D333 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
+		5C75A3221C7EB8E90040D333 /* RootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTableViewController.h; sourceTree = "<group>"; };
+		5C75A3231C7EB8E90040D333 /* RootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTableViewController.m; sourceTree = "<group>"; };
+		5C75A3241C7EB8E90040D333 /* TripOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripOverviewViewController.h; sourceTree = "<group>"; };
+		5C75A3251C7EB8E90040D333 /* TripOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripOverviewViewController.m; sourceTree = "<group>"; };
+		5C75A3301C7EBA250040D333 /* FlightDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailTableViewController.h; sourceTree = "<group>"; };
+		5C75A3311C7EBA250040D333 /* FlightDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailTableViewController.m; sourceTree = "<group>"; };
+		5C75A3331C7EBA540040D333 /* FlightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightTableViewCell.h; sourceTree = "<group>"; };
+		5C75A3341C7EBA540040D333 /* FlightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightTableViewCell.m; sourceTree = "<group>"; };
+		5C75A3361C7EBD190040D333 /* InterestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestDetailViewController.h; sourceTree = "<group>"; };
+		5C75A3371C7EBD190040D333 /* InterestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestDetailViewController.m; sourceTree = "<group>"; };
+		5C75A3381C7EBD190040D333 /* InterestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestTableViewController.h; sourceTree = "<group>"; };
+		5C75A3391C7EBD190040D333 /* InterestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestTableViewController.m; sourceTree = "<group>"; };
 		5C78E2581C7A4B3D009D3F5C /* CreateTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTripViewController.h; sourceTree = "<group>"; };
 		5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTripViewController.m; sourceTree = "<group>"; };
-		5C78E25B1C7A4FB0009D3F5C /* InterestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestDetailViewController.h; sourceTree = "<group>"; };
-		5C78E25C1C7A4FB0009D3F5C /* InterestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestDetailViewController.m; sourceTree = "<group>"; };
 		5C78E25F1C7A4FE7009D3F5C /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		5C78E2601C7A4FE7009D3F5C /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
-		5C78E2631C7A5062009D3F5C /* InterestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestTableViewController.h; sourceTree = "<group>"; };
-		5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestTableViewController.m; sourceTree = "<group>"; };
-		5C78E2661C7AB8A2009D3F5C /* FindHotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindHotelViewController.h; sourceTree = "<group>"; };
-		5C78E2671C7AB8A2009D3F5C /* FindHotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindHotelViewController.m; sourceTree = "<group>"; };
 		5C78E2691C7ABAD3009D3F5C /* FlightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightViewController.h; sourceTree = "<group>"; };
 		5C78E26A1C7ABAD3009D3F5C /* FlightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightViewController.m; sourceTree = "<group>"; };
 		5C78E26C1C7B9EA1009D3F5C /* FriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailViewController.h; sourceTree = "<group>"; };
@@ -140,6 +167,8 @@
 		5C539F081C6ABA1B00D78977 /* TabMain */ = {
 			isa = PBXGroup;
 			children = (
+				5C75A32F1C7EB91D0040D333 /* TripOverview */,
+				5C75A32E1C7EB9010040D333 /* Restaurant */,
 				5C5C5CEC1C7CF2E4000C9F0D /* MainPage */,
 				5C5C5CEB1C7CECE3000C9F0D /* TripDetail */,
 				5C5C5CEA1C7CECD1000C9F0D /* Hotel */,
@@ -197,10 +226,10 @@
 		5C5C5CE61C7CEC80000C9F0D /* Interest */ = {
 			isa = PBXGroup;
 			children = (
-				5C78E25B1C7A4FB0009D3F5C /* InterestDetailViewController.h */,
-				5C78E25C1C7A4FB0009D3F5C /* InterestDetailViewController.m */,
-				5C78E2631C7A5062009D3F5C /* InterestTableViewController.h */,
-				5C78E2641C7A5062009D3F5C /* InterestTableViewController.m */,
+				5C75A3361C7EBD190040D333 /* InterestDetailViewController.h */,
+				5C75A3371C7EBD190040D333 /* InterestDetailViewController.m */,
+				5C75A3381C7EBD190040D333 /* InterestTableViewController.h */,
+				5C75A3391C7EBD190040D333 /* InterestTableViewController.m */,
 				5C78E25F1C7A4FE7009D3F5C /* Cell.h */,
 				5C78E2601C7A4FE7009D3F5C /* Cell.m */,
 			);
@@ -210,6 +239,8 @@
 		5C5C5CE71C7CEC9E000C9F0D /* CreateTrip */ = {
 			isa = PBXGroup;
 			children = (
+				5C75A3221C7EB8E90040D333 /* RootTableViewController.h */,
+				5C75A3231C7EB8E90040D333 /* RootTableViewController.m */,
 				5C78E2581C7A4B3D009D3F5C /* CreateTripViewController.h */,
 				5C78E2591C7A4B3D009D3F5C /* CreateTripViewController.m */,
 			);
@@ -232,6 +263,10 @@
 		5C5C5CE91C7CECC4000C9F0D /* Flight */ = {
 			isa = PBXGroup;
 			children = (
+				5C75A3331C7EBA540040D333 /* FlightTableViewCell.h */,
+				5C75A3341C7EBA540040D333 /* FlightTableViewCell.m */,
+				5C75A3301C7EBA250040D333 /* FlightDetailTableViewController.h */,
+				5C75A3311C7EBA250040D333 /* FlightDetailTableViewController.m */,
 				5C78E2691C7ABAD3009D3F5C /* FlightViewController.h */,
 				5C78E26A1C7ABAD3009D3F5C /* FlightViewController.m */,
 			);
@@ -241,8 +276,12 @@
 		5C5C5CEA1C7CECD1000C9F0D /* Hotel */ = {
 			isa = PBXGroup;
 			children = (
-				5C78E2661C7AB8A2009D3F5C /* FindHotelViewController.h */,
-				5C78E2671C7AB8A2009D3F5C /* FindHotelViewController.m */,
+				5C75A3161C7EB8E90040D333 /* HotelDetailReviewsViewController.h */,
+				5C75A3171C7EB8E90040D333 /* HotelDetailReviewsViewController.m */,
+				5C75A3181C7EB8E90040D333 /* HotelDetailsViewController.h */,
+				5C75A3191C7EB8E90040D333 /* HotelDetailsViewController.m */,
+				5C75A31A1C7EB8E90040D333 /* HotelTableViewController.h */,
+				5C75A31B1C7EB8E90040D333 /* HotelTableViewController.m */,
 			);
 			name = Hotel;
 			sourceTree = "<group>";
@@ -265,6 +304,28 @@
 				5C5C5CEF1C7CF319000C9F0D /* MainPageTripCell.h */,
 			);
 			name = MainPage;
+			sourceTree = "<group>";
+		};
+		5C75A32E1C7EB9010040D333 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				5C75A31C1C7EB8E90040D333 /* RestaurantDetailsViewController.h */,
+				5C75A31D1C7EB8E90040D333 /* RestaurantDetailsViewController.m */,
+				5C75A31E1C7EB8E90040D333 /* RestaurantReviewDetailViewController.h */,
+				5C75A31F1C7EB8E90040D333 /* RestaurantReviewDetailViewController.m */,
+				5C75A3201C7EB8E90040D333 /* RestaurantTableViewController.h */,
+				5C75A3211C7EB8E90040D333 /* RestaurantTableViewController.m */,
+			);
+			name = Restaurant;
+			sourceTree = "<group>";
+		};
+		5C75A32F1C7EB91D0040D333 /* TripOverview */ = {
+			isa = PBXGroup;
+			children = (
+				5C75A3241C7EB8E90040D333 /* TripOverviewViewController.h */,
+				5C75A3251C7EB8E90040D333 /* TripOverviewViewController.m */,
+			);
+			name = TripOverview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,16 +459,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C75A32D1C7EB8E90040D333 /* TripOverviewViewController.m in Sources */,
+				5C75A3291C7EB8E90040D333 /* RestaurantDetailsViewController.m in Sources */,
+				5C75A3321C7EBA250040D333 /* FlightDetailTableViewController.m in Sources */,
 				5C539F0E1C6ABA1B00D78977 /* AppDelegate.m in Sources */,
-				5C78E2681C7AB8A2009D3F5C /* FindHotelViewController.m in Sources */,
+				5C75A32B1C7EB8E90040D333 /* RestaurantTableViewController.m in Sources */,
 				5C5C5CEE1C7CF309000C9F0D /* MainPageTripCell.m in Sources */,
+				5C75A32A1C7EB8E90040D333 /* RestaurantReviewDetailViewController.m in Sources */,
 				5C78E2701C7B9EA1009D3F5C /* FriendDetailViewController.m in Sources */,
-				5C78E2651C7A5062009D3F5C /* InterestTableViewController.m in Sources */,
-				5C78E25D1C7A4FB0009D3F5C /* InterestDetailViewController.m in Sources */,
 				5C539F561C6AD82F00D78977 /* TripDetailViewController.m in Sources */,
 				5C78E2741C7B9ED6009D3F5C /* Friend.m in Sources */,
+				5C75A3281C7EB8E90040D333 /* HotelTableViewController.m in Sources */,
 				5C78E25A1C7A4B3D009D3F5C /* CreateTripViewController.m in Sources */,
+				5C75A32C1C7EB8E90040D333 /* RootTableViewController.m in Sources */,
+				5C75A33B1C7EBD190040D333 /* InterestTableViewController.m in Sources */,
+				5C75A3271C7EB8E90040D333 /* HotelDetailsViewController.m in Sources */,
+				5C75A3261C7EB8E90040D333 /* HotelDetailReviewsViewController.m in Sources */,
+				5C75A3351C7EBA540040D333 /* FlightTableViewCell.m in Sources */,
 				5C78E26B1C7ABAD3009D3F5C /* FlightViewController.m in Sources */,
+				5C75A33A1C7EBD190040D333 /* InterestDetailViewController.m in Sources */,
 				5C78E2711C7B9EA1009D3F5C /* FriendTableViewController.m in Sources */,
 				5C539F4F1C6AC28000D78977 /* TableViewController.m in Sources */,
 				5C8989991C7286B300415618 /* ProfileViewController.m in Sources */,
