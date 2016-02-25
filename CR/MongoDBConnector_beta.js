@@ -18,13 +18,7 @@ db.on('error', function(error) {
 });
 
 console.log('DB Connected');
-var newyorkSchema = new mongoose.Schema({
-    category    : {type : String},
-    review_count      : {type : String},
-    name      : {type : String},
-    rating_string      : {type : String}
 
-});
 var reviewSchema = new mongoose.Schema({
     city    : {type : String},
     spot      : {type : String},
@@ -35,7 +29,7 @@ var reviewSchema = new mongoose.Schema({
 var EmptySchema = new mongoose.Schema({
     title      : {type : String}
 });
-var newyorkHotelSchema = new mongoose.Schema({
+var RestHotelSchema = new mongoose.Schema({
     category    : {type : String},
     review_count      : {type : String},
     name      : {type : String},
@@ -44,10 +38,9 @@ var newyorkHotelSchema = new mongoose.Schema({
 });
 
 var mongooseModel = db.model('newyork', EmptySchema);
-var newyorkModel = db.model('newyork', EmptySchema);
-var hotelModel = db.model('newyorkhotel', newyorkHotelSchema);
-var restModel = db.model('newyorkrestaurant', newyorkHotelSchema);
-var reviewModel = db.model('review', newyorkSchema);
+var spotModel = db.model('newyork', RestHotelSchema);
+var hotelModel = db.model('newyorkhotel', RestHotelSchema);
+var restModel = db.model('newyorkrestaurant', RestHotelSchema);
 var reviewtestModel = db.model('reviewtest', reviewSchema);
 
 
@@ -155,7 +148,7 @@ app.get('/searchlyc',function(req, res){
     var count = req.query['count'];
 
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
-    mongooseModel.find({'category': category},'-_id', function(err, docs) {
+    spotModel.find({'category': category},'-_id', function(err, docs) {
         if (!err){
             docs = docs.sort(function(a, b){return b.rating_string - a.rating_string})
             var size = docs.length > count ? count : docs.length
@@ -177,9 +170,9 @@ app.get('/searchlyc',function(req, res){
 
 //-------------------------- Queries for Chenyang Ran to use  -------------------
 /*
- * INPUT: City, Category, Count
- * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
- * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&category=spot&city=newyork
+ * INPUT: City, Spot, Count
+ * OUTPUT: A specific number(Count) of reviews of a specific SPOT in a specific CITY
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchreviews?count=4&spot=card2&city=newyork
  */
 app.get('/searchreviews',function(req, res){
 
@@ -203,9 +196,9 @@ app.get('/searchreviews',function(req, res){
 })
 
 /*
- * INPUT: City, Category, Count
- * OUTPUT: TOP count attractions of Category in CITY ranked by rating_score
- * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8080/insertreview?count=1&spot=card2&city=newyork&name=peter&content=jajajaja
+ * INPUT: Spot, City, Name, Content
+ * OUTPUT: Insert review(Content) from user(Name) for a Spot in a City
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/insertreview?spot=card2&city=newyork&name=peter7&content==jajajaja
  */
 app.get('/insertreview',function(req, res){
 
@@ -235,8 +228,8 @@ app.get('/insertreview',function(req, res){
 //-------------------------- Queries for Zhiyue Liu to use  -------------------
 /*
  * INPUT: City, Count
- * OUTPUT: TOP count  in CITY ranked by rating_score
- * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&city=newyork
+ * OUTPUT: TOP count hotel in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchhotel?count=12&city=newyork
  */
 app.get('/searchhotel',function(req, res){
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
@@ -265,8 +258,8 @@ app.get('/searchhotel',function(req, res){
 
 /*
  * INPUT: City, Count
- * OUTPUT: TOP count  in CITY ranked by rating_score
- * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchlyc?count=2&city=newyork
+ * OUTPUT: TOP count restaurant in CITY ranked by rating_score
+ * EXAMPLE: http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchrestaurant?count=2&city=newyork
  */
 app.get('/searchrestaurant',function(req, res){
     res.set({'Content-Type':'text/json', 'Encodeing':'utf8'}); 
