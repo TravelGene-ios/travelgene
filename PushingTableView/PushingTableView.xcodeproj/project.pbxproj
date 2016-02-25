@@ -27,6 +27,9 @@
 		5E3B3D761C7D150800ACBB59 /* RestaurantDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3B3D751C7D150800ACBB59 /* RestaurantDetailsViewController.m */; };
 		5E3B3D791C7D197600ACBB59 /* RestaurantReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3B3D781C7D197600ACBB59 /* RestaurantReviewDetailViewController.m */; };
 		5E7809C31C7C04F0000EFAE2 /* HotelDetailReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E7809C21C7C04F0000EFAE2 /* HotelDetailReviewsViewController.m */; };
+		5EC63FD61C7E3F5D00428D69 /* FlightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC63FD51C7E3F5D00428D69 /* FlightTableViewCell.m */; };
+		5EC63FDD1C7E56CB00428D69 /* TripOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC63FDB1C7E56CB00428D69 /* TripOverviewViewController.m */; };
+		5EC63FDE1C7E56CB00428D69 /* TripOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC63FDC1C7E56CB00428D69 /* TripOverviewViewController.xib */; };
 		5EE39E791C754251002A2B07 /* HotelDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE39E781C754251002A2B07 /* HotelDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,11 @@
 		5E3B3D781C7D197600ACBB59 /* RestaurantReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantReviewDetailViewController.m; sourceTree = "<group>"; };
 		5E7809C11C7C04F0000EFAE2 /* HotelDetailReviewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailReviewsViewController.h; sourceTree = "<group>"; };
 		5E7809C21C7C04F0000EFAE2 /* HotelDetailReviewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailReviewsViewController.m; sourceTree = "<group>"; };
+		5EC63FD41C7E3F5D00428D69 /* FlightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightTableViewCell.h; sourceTree = "<group>"; };
+		5EC63FD51C7E3F5D00428D69 /* FlightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightTableViewCell.m; sourceTree = "<group>"; };
+		5EC63FDA1C7E56CB00428D69 /* TripOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripOverviewViewController.h; sourceTree = "<group>"; };
+		5EC63FDB1C7E56CB00428D69 /* TripOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripOverviewViewController.m; sourceTree = "<group>"; };
+		5EC63FDC1C7E56CB00428D69 /* TripOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripOverviewViewController.xib; sourceTree = "<group>"; };
 		5EE39E771C754251002A2B07 /* HotelDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsViewController.h; sourceTree = "<group>"; };
 		5EE39E781C754251002A2B07 /* HotelDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +162,11 @@
 				5E3B3D751C7D150800ACBB59 /* RestaurantDetailsViewController.m */,
 				5E3B3D771C7D197600ACBB59 /* RestaurantReviewDetailViewController.h */,
 				5E3B3D781C7D197600ACBB59 /* RestaurantReviewDetailViewController.m */,
+				5EC63FD41C7E3F5D00428D69 /* FlightTableViewCell.h */,
+				5EC63FD51C7E3F5D00428D69 /* FlightTableViewCell.m */,
+				5EC63FDA1C7E56CB00428D69 /* TripOverviewViewController.h */,
+				5EC63FDB1C7E56CB00428D69 /* TripOverviewViewController.m */,
+				5EC63FDC1C7E56CB00428D69 /* TripOverviewViewController.xib */,
 			);
 			path = PushingTableView;
 			sourceTree = "<group>";
@@ -263,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC63FDE1C7E56CB00428D69 /* TripOverviewViewController.xib in Resources */,
 				5E387E951C72B8E000BB4BC6 /* Images.xcassets in Resources */,
 				5E387E871C72B8DF00BB4BC6 /* InfoPlist.strings in Resources */,
 				5E387E901C72B8DF00BB4BC6 /* Main.storyboard in Resources */,
@@ -291,6 +305,8 @@
 				5E3B3D731C7D10F000ACBB59 /* RestaurantTableViewController.m in Sources */,
 				5E387EB31C72B9DA00BB4BC6 /* RootTableViewController.m in Sources */,
 				5EE39E791C754251002A2B07 /* HotelDetailsViewController.m in Sources */,
+				5EC63FD61C7E3F5D00428D69 /* FlightTableViewCell.m in Sources */,
+				5EC63FDD1C7E56CB00428D69 /* TripOverviewViewController.m in Sources */,
 				5E387E8D1C72B8DF00BB4BC6 /* AppDelegate.m in Sources */,
 				5E387E891C72B8DF00BB4BC6 /* main.m in Sources */,
 				5E387EB91C72CB8500BB4BC6 /* HotelTableViewController.m in Sources */,

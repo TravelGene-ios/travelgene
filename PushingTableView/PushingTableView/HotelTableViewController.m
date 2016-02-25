@@ -8,6 +8,8 @@
 
 #import "HotelTableViewController.h"
 #import "HotelDetailsViewController.h"
+#import "RestaurantTableViewController.h"
+
 @interface HotelTableViewController ()
 
 @end
@@ -189,6 +191,14 @@
         destController.hotelRating = [hotel_ratings objectAtIndex:indexPath.row];
         destController.hotelReviews = [hotel_review_list objectAtIndex:indexPath.row];
         destController.title = destController.hotelName;
+    }else if([segue.identifier isEqualToString:@"passSelectedHotel2Restaurant"]){
+        
+        UINavigationController *navController = segue.destinationViewController;
+        RestaurantTableViewController *dest =(RestaurantTableViewController*) navController.topViewController;
+        dest.selectedHotels = @"westin";
+        dest.selectedFlights = self.selectedFlights;
+//        NSLog(@"%@", dest.selectedHotels);
+//        NSLog(@"%@", dest.selectedFlights);
     }
 }
 
