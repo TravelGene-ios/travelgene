@@ -10,4 +10,6 @@
 
 @interface HotelTableViewController : UITableViewController
 
+@property(strong, nonatomic) NSMutableArray* selectedFlights;
+
 @end

@@ -8,6 +8,9 @@
 
 #import "RootTableViewController.h"
 #import "DetailTableViewController.h"
+#import "FlightTableViewCell.h"
+
+#import "HotelTableViewController.h"
 
 @interface RootTableViewController ()
 
@@ -15,6 +18,7 @@
 
 @implementation RootTableViewController{
     NSMutableArray * flights;
+    NSMutableArray * selectedFlights;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -31,9 +35,9 @@
     [super viewDidLoad];
     
     flights = [NSMutableArray arrayWithObjects:@"Delta", @"American Airline", @"JetBlue", nil];
-    
-
-    
+    if(!selectedFlights){
+        selectedFlights = [[NSMutableArray alloc] init];
+    }
     //navigationItem edit button
 //    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
@@ -54,6 +58,7 @@
     if(!flights){
         flights = [[NSMutableArray alloc] init];
     }
+
     [flights addObject:tmp];
     [self.tableView reloadData];
 //    [animals insertObject: tmp atIndex:[animals count]-1];
@@ -72,7 +77,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     // Return the number of sections.
     return 1;
 }
@@ -88,17 +92,52 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"AnimalCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier forIndexPath:indexPath];
+    FlightTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier ];//forIndexPath:indexPath];
     
     // Configure the cell...
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    cell.textLabel.text = [flights objectAtIndex:indexPath.row];
+//    if (cell == nil) {
+//        cell = [[FlightTableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+//    }
+    cell.flight_cell_label.text = [flights objectAtIndex:indexPath.row];
+    cell.likedBtn.tag = indexPath.row; // starts from 0
+    [cell.likedBtn addTarget: self action:@selector(likeBtnClick:) forControlEvents:UIControlEventTouchUpInside];//listener, and run method likeBtnClick
+    // should read from database
+    [cell.likedBtn setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal];
+    cell.likedBtn.titleLabel.text=@"unlike";
+    cell.likedBtn.titleLabel.hidden=YES;
+    
     return cell;
 }
 
+-(void) likeBtnClick:(id) sender
+{
+    UIButton *senderButton = (UIButton *) sender;
+    NSLog(@"current row=%d", senderButton.tag); // index path row
+//    UIImage *image = senderButton.currentBackgroundImage;
+    NSLog(@"img: %@", senderButton.titleLabel.text);
+    if([senderButton.titleLabel.text isEqualToString: @"unlike"] ){
+            [senderButton setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal ];
+        senderButton.titleLabel.text=@"like";
 
+        [selectedFlights addObject:[flights objectAtIndex:senderButton.tag]];
+
+        
+        // add the logic of recommendation
+//        NSString * tmp = @"Panda";
+//        if(!flights){
+//            flights = [[NSMutableArray alloc] init];
+//        }
+//        [flights addObject:tmp];
+//        [self.tableView reloadData];
+        
+    }else{
+        [senderButton setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal ];
+        senderButton.titleLabel.text=@"unlike";
+//        NSLog(@"%@", selectedFlights);
+        [selectedFlights removeObject:[flights objectAtIndex:senderButton.tag]];
+//        NSLog(@"%@", selectedFlights);
+    }
+}
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,8 +145,6 @@
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,6 +158,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
+
 
 /*
 // Override to support rearranging the table view.
@@ -151,6 +189,12 @@
         DetailTableViewController *destController = segue.destinationViewController;
         destController.animalName = [flights objectAtIndex:indexPath.row];
         destController.title = destController.animalName;
+    }else if([segue.identifier isEqualToString:@"passSelectedFlight2Hotel"]){
+        UINavigationController *navController = segue.destinationViewController;
+        HotelTableViewController *dest =(HotelTableViewController*) navController.topViewController;
+        NSLog(@"%@", selectedFlights);
+        dest.selectedFlights = selectedFlights;
+
     }
 }
 

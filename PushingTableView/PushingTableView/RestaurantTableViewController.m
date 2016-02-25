@@ -9,6 +9,7 @@
 #import "RestaurantTableViewController.h"
 #import "RestaurantDetailsViewController.h"
 
+
 @interface RestaurantTableViewController ()
 
 @end
@@ -24,6 +25,7 @@
     NSMutableArray * restaurant_price_ranges;
     NSMutableArray * restaurant_open_hours;
 }
+@synthesize msg;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -165,6 +167,7 @@
 */
 
 
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -182,7 +185,23 @@
         destController.restaurant_open_hour = [restaurant_open_hours objectAtIndex:indexPath.row];
         destController.restaurant_reviews = [restaurant_review_list objectAtIndex:indexPath.row];
         destController.title = destController.restaurant_title;
-    }}
+    }
+    else if([segue.identifier isEqualToString:@"showOverviewPage"]){
+        UINavigationController *navController = segue.destinationViewController;
+        TripOverviewViewController *dest =(TripOverviewViewController*) navController.topViewController;
+        dest.name = @"test string";
+        dest.title = @"Trip Overview";
+        dest.selectedFlights = self.selectedFlights;
+        dest.selectedHotels = self.selectedHotels;
+        dest.selectedRestaurants = @"red pepper";
+//        NSLog(@"%@", dest.name);
+        [dest setDelegate:self];
+    }
+}
 
+#pragma mark - Protocol Methods
+-(void) setLabel:(NSString *) label{
+    msg = label;
+}
 
 @end

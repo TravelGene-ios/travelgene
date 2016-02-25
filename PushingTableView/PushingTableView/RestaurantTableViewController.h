@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TripOverviewViewController.h"
 
-@interface RestaurantTableViewController : UITableViewController
+@interface RestaurantTableViewController : UITableViewController <passLabel>
+
+@property (strong, nonatomic) NSString * msg;
+@property (strong, nonatomic) NSString * selectedHotels;
+@property (strong, nonatomic) NSMutableArray * selectedFlights;
 
 @end
