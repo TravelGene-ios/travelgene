@@ -1,3 +1,5 @@
+sudo mysql -u root -ptravelgene travelgene
+
 CREATE TABLE IF NOT EXISTS users2 (
          userid MEDIUMINT NOT NULL AUTO_INCREMENT,
          name VARCHAR(100)  NOT NULL DEFAULT 'john',
@@ -18,14 +20,15 @@ CREATE TABLE IF NOT EXISTS friendlist (
          INDEX  (userid)
        );
 
+
 CREATE TABLE IF NOT EXISTS tripdetail (
          tripid MEDIUMINT NOT NULL AUTO_INCREMENT,
          email VARCHAR(100)  NOT NULL,
          date_start DATE NOT NULL,
          date_end DATE NOT NULL,
          destination VARCHAR(100)  NOT NULL,
-         activity JSON NOT NULL,
+         activity TEXT NOT NULL,
          PRIMARY KEY  (tripid)
        );
 
-INSERT INTO tripdetail (email, date_start, date_end, destination, activity) VALUES('qiqi.cmu@gmail.com','2015-12-04','2015-12-05','{"activity": ["The National 9/11 Memorial & Museum, New York City", "CityRover Walks NY, New York City","Times Square, New York City","Staten Island Ferry, New York City"]}');
+INSERT INTO tripdetail (email, date_start, date_end, destination, activity) VALUES('qiqi.cmu@gmail.com','2015-12-04','2015-12-05','NewYork.NY','{"activity": ["The National 9/11 Memorial & Museum, New York City", "CityRover Walks NY, New York City","Times Square, New York City","Staten Island Ferry, New York City"]}');
