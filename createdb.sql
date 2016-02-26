@@ -32,3 +32,7 @@ CREATE TABLE IF NOT EXISTS tripdetail (
        );
 
 INSERT INTO tripdetail (email, date_start, date_end, destination, activity) VALUES('qiqi.cmu@gmail.com','2015-12-04','2015-12-05','NewYork.NY','{"activity": ["The National 9/11 Memorial & Museum, New York City", "CityRover Walks NY, New York City","Times Square, New York City","Staten Island Ferry, New York City"]}');
+
+
+// select friendlist (followee) for user 1
+select * from users2 where userid in (select followee from friendlist where userid = 1);
