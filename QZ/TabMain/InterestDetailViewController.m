@@ -21,6 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSLog(@"InterestDetails");
+    
+    _rate.text=_localrate;
+    _address.text=_localaddress;
+    self.title=_interestName;
+    
     [[self myPictureCollectionView]setDataSource:self];
     [[self myPictureCollectionView]setDelegate:self];
     

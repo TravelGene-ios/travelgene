@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface InterestTableViewController : UITableViewController
+   @property (nonatomic)  NSString *destination;
+   @property (nonatomic) NSDate *startDate;
+   @property (nonatomic) NSDate *endDate;
+   @property (nonatomic) NSInteger *groupnumber;
+
 - (IBAction)touchNextBtn:(id)sender;
+
 @end

@@ -14,13 +14,64 @@
 @end
 
 @implementation InterestTableViewController{
-    NSArray *interest;
+    NSMutableArray *interest;
+    NSMutableArray *rate;
+    NSMutableArray *address;
+    
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    interest=[NSArray arrayWithObjects:@"Golden Gate Park", @"Golden Gate Bridge", nil];
+    
+    interest=[[NSMutableArray alloc] init];
+    rate=[[NSMutableArray alloc] init];
+    address=[[NSMutableArray alloc] init];
+
+    
+   // load data from database by query
+    NSString* path=[NSString stringWithFormat:@"%@%@%@", @"http://ec2-52-90-95-189.compute-1.amazonaws.com:5000/mongodb_connection_test?city=", _destination, @"&category=spot&count=2"];
+    NSLog(path);
+    NSURL* url = [NSURL URLWithString:path];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    NSData* jsonData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSDictionary* dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:nil];
+    NSArray* arrayResult =[dic objectForKey:@"result"];
+   
+   
+    // to attach each details to each part
+    for (int i=0;i<[arrayResult count];i++){
+            NSDictionary* resultDic = [arrayResult objectAtIndex:i];
+        
+        
+        // add title
+            NSString *tmp=[resultDic objectForKey:@"title"];
+            NSArray *t=[[tmp componentsSeparatedByString:@","] objectAtIndex:0];
+           [interest addObject: t];
+        
+        NSLog(@"add rate");
+        //add rate
+        NSString *rt=[resultDic objectForKey:@"rating_string"];
+        [rate addObject: rt];
+        
+        NSLog(@"add address");
+
+        
+        // add address
+        NSString *at=[resultDic objectForKey:@"address"];
+        [address addObject: at];
+        
+        NSLog(@"add review");
+
+        // add review
+        NSDictionary* review_list = [resultDic objectForKey:@"review_list"];
+    }
+    
+
+    
+    
+    //interest=[NSArray arrayWithObjects:@"Golden Gate Park", @"Golden Gate Bridge", nil];
     self.title = @"Interests";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -34,7 +85,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
@@ -63,39 +114,6 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 - (IBAction)touchNextBtn:(id)sender {
     self.count++;
     NSLog(@"count = %d",self.count);
@@ -110,27 +128,20 @@
     // Pass the selected object to the new view controller.
     
     if([segue.identifier isEqualToString:@"arrayDetail"]){
+
         NSIndexPath *indexPath=[self.tableView indexPathForSelectedRow];
+        NSLog(@"row%@",indexPath);
         InterestDetailViewController *destViewController=segue.destinationViewController;
         destViewController.interestName=[interest objectAtIndex:indexPath.row];
-        NSLog(@"to detail.");
+        destViewController.localrate=[rate objectAtIndex:indexPath.row];
+        destViewController.localaddress=[address objectAtIndex:indexPath.row];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // UIAlertView *messageAlert = [[UIAlertView alloc]
-    //                              initWithTitle:@"Row Selected" message:[detail objectAtIndex:indexPath.row] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
-    // Display Alert Message
-    //    [messageAlert show];
-//    NSLog(@"Did select, Passed Row index:%d",indexPath.row);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    // Store Selection
-    //    [self setSelection:indexPath];
-    
-    // Perform the segue with identifier: updateToDoViewController
     [self performSegueWithIdentifier:@"arrayDetail" sender:indexPath];
     
 }

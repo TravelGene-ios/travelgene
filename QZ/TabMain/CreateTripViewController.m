@@ -6,7 +6,11 @@
 //  Copyright © 2016 Qiankun Zhuang. All rights reserved.
 //
 
+//modify: Qiqi
+
 #import "CreateTripViewController.h"
+#import "InterestTableViewController.h"
+
 
 @interface CreateTripViewController ()
 
@@ -21,27 +25,31 @@
     self.title = @"Create Trip";
     [_destination setDelegate:self];
     
-    datePicker=[[UIDatePicker alloc] init];
-    datePicker.datePickerMode=UIDatePickerModeDate;
-    [self.departDate setInputView:datePicker];
     
-    seconddata=[[UIDatePicker alloc] init];
-    seconddata.datePickerMode=UIDatePickerModeDate;
-    [self.returnDate setInputView:seconddata];
+    //depart Date Picker
+    datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    
+    datePicker.backgroundColor = [UIColor whiteColor];
+    [datePicker addTarget:self action:@selector(dateUpdated:) forControlEvents:UIControlEventValueChanged];
+    self.departDate.inputView = datePicker;
+    
+    //return Date Picker
+    returnDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    returnDatePicker.datePickerMode = UIDatePickerModeDate;
+    
+    returnDatePicker.backgroundColor = [UIColor whiteColor];
+    [returnDatePicker addTarget:self action:@selector(returndateUpdated:) forControlEvents:UIControlEventValueChanged];
+    self.returnDate.inputView = returnDatePicker;
     
     
-    UIToolbar *toolBar=[[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [toolBar setTintColor:[UIColor redColor]];
-    UIBarButtonItem *doneButton=[[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                 style:UIBarButtonItemStylePlain
-                                                                target:self
-                                                                action:@selector(ShowSelectedDate)];
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonWasPressed:)];
+    UIBarButtonItem *flexibleSeparator = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    toolbar.items = @[flexibleSeparator, doneButton];
+    self.departDate.inputAccessoryView = toolbar;
     
-    UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                        target:nil
-                                                                        action:nil];
-    [toolBar setItems:[NSArray arrayWithObjects:space,doneButton,nil]];
-    
+    self.returnDate.inputAccessoryView=toolbar;
 }
 
 
@@ -60,15 +68,18 @@
 }
 
 
--(void)ShowSelectedDate
-{
-    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"dd/mm/yyyy"];
-    self.departDate.text=[NSString stringWithFormat:@"%@",[formatter stringFromDate:datePicker.date]];
-    [self.departDate resignFirstResponder];
-    
-    self.returnDate.text=[NSString stringWithFormat:@"%@",[formatter stringFromDate:seconddata.date]];
-    [self.returnDate resignFirstResponder];
+- (void) dateUpdated:(UIDatePicker *)datePicker {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.departDate.text = [formatter stringFromDate:datePicker.date];
+}
+
+
+//returnDate Update
+- (void) returndateUpdated:(UIDatePicker *)datePicker {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    self.returnDate.text = [formatter stringFromDate:datePicker.date];
 }
 
 - (void)didReceiveMemoryWarning
@@ -78,20 +89,47 @@
 }
 
 
-- (IBAction)submitClicked:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"InterestViewController" sender:self];
+-  (IBAction)submit:(id)sender {
+    NSLog(@"here here here");
+    
+    NSDate *today=[NSDate date];
+    
+    if ([_destination.text isEqualToString:@""]) {
+        NSLog(@"All fields should be filled for registration");
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You should fill out all fields" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [error show];
+    }else if ([datePicker.date compare:today]==NSOrderedAscending) {
+        NSLog(@"Depart Date should be after today");
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You should change your depart date" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [error show];
+    }else if([returnDatePicker.date compare:datePicker.date]==NSOrderedAscending){
+        NSLog(@"Return Date should be after depart Date");
+        UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Sorry" message:@"You should change your return date" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [error show];
+    }else{
+        [self performSegueWithIdentifier:@"InterestViewController" sender:self];
+    }
+    NSLog(@"submit end");
 }
 
-
-
-/*
-#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([segue.identifier isEqualToString:@"InterestViewController"]){
+        InterestTableViewController *destViewController=segue.destinationViewController;
+        destViewController.destination=_destination.text;
+        destViewController.startDate=datePicker.date;
+        destViewController.endDate=returnDatePicker.date;
+        if ([[_segment titleForSegmentAtIndex:_segment.selectedSegmentIndex] isEqualToString:@"3+"]){
+            destViewController.groupnumber=3;
+        }else{
+        destViewController.groupnumber=[[_segment titleForSegmentAtIndex:_segment.selectedSegmentIndex] intValue];
+        }
+    }
+    NSLog(@"prepare end");
 }
-*/
 
 @end
