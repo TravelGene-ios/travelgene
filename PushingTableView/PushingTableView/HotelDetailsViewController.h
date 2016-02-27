@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface HotelDetailsViewController : UIViewController
 @property (nonatomic, strong) NSString *hotelName;
 @property (nonatomic, strong) NSString *hotelAddr;

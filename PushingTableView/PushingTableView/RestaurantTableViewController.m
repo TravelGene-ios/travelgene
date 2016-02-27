@@ -15,6 +15,8 @@
 @end
 
 @implementation RestaurantTableViewController{
+        NSMutableArray * selected_restaurants;
+    
     NSMutableArray * restaurant_titles;
     NSMutableArray * restaurant_addresses;
     NSMutableArray * restaurant_imgs;
@@ -39,7 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    int retrievalSize = 2;
+    int retrievalSize = 10;
     
     NSString* path  = [NSString stringWithFormat:@"%@%@%@", @"http://ec2-52-90-95-189.compute-1.amazonaws.com:8888/searchrestaurant?count=",[NSString stringWithFormat:@"%i", retrievalSize], @"&city=newyork"];
     
@@ -71,6 +73,9 @@
     }
     if(!restaurant_open_hours){
         restaurant_open_hours  = [[NSMutableArray alloc] init];
+    }
+    if(!selected_restaurants){
+        selected_restaurants = [[NSMutableArray alloc] init];
     }
     for (int i=0; i<retrievalSize; i++) {
         NSDictionary* resultDic = [arrayResult objectAtIndex:i];
@@ -118,14 +123,51 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"RestaurantCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier forIndexPath:indexPath];
-
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    cell.textLabel.text = [restaurant_titles objectAtIndex:indexPath.row];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier forIndexPath:indexPath];
+//
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+//    }
+//    cell.textLabel.text = [restaurant_titles objectAtIndex:indexPath.row];
+    SelectedItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    // Configure the cell...
+    //    if (cell == nil) {
+    //        cell = [[FlightTableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    //    }
+    cell.item_label.text = [restaurant_titles objectAtIndex:indexPath.row];
+    cell.likeBtn.tag = indexPath.row; // starts from 0
+    [cell.likeBtn addTarget: self action:@selector(likeBtnClick:) forControlEvents:UIControlEventTouchUpInside];//listener, and run method likeBtnClick
+    // should read from database
+    [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal];
+    cell.likeBtn.titleLabel.text=@"unlike";
+    cell.likeBtn.titleLabel.hidden=YES;
     return cell;
 }
+
+-(void) likeBtnClick:(id) sender{
+    UIButton *senderButton = (UIButton *) sender;
+    NSLog(@"current row=%d", senderButton.tag); // index path row
+    //    UIImage *image = senderButton.currentBackgroundImage;
+    NSLog(@"img: %@", senderButton.titleLabel.text);
+    if([senderButton.titleLabel.text isEqualToString: @"unlike"] ){
+        [senderButton setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal ];
+        senderButton.titleLabel.text=@"like";
+        [selected_restaurants addObject:[restaurant_titles objectAtIndex:senderButton.tag]];
+        // add the logic of recommendation
+        //        NSString * tmp = @"Panda";
+        //        if(!flights){
+        //            flights = [[NSMutableArray alloc] init];
+        //        }
+        //        [flights addObject:tmp];
+        //        [self.tableView reloadData];
+        
+    }else{
+        [senderButton setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal ];
+        senderButton.titleLabel.text=@"unlike";
+        [selected_restaurants removeObject:[restaurant_titles objectAtIndex:senderButton.tag]];
+    }
+}
+
 
 
 /*
@@ -193,8 +235,8 @@
         dest.title = @"Trip Overview";
         dest.selectedFlights = self.selectedFlights;
         dest.selectedHotels = self.selectedHotels;
-        dest.selectedRestaurants = @"red pepper";
-//        NSLog(@"%@", dest.name);
+        dest.selectedRestaurants = selected_restaurants;
+        NSLog(@"%@", dest.selectedRestaurants);
         [dest setDelegate:self];
     }
 }

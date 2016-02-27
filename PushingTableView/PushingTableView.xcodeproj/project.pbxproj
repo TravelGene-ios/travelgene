@@ -30,6 +30,7 @@
 		5EC63FD61C7E3F5D00428D69 /* FlightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC63FD51C7E3F5D00428D69 /* FlightTableViewCell.m */; };
 		5EC63FDD1C7E56CB00428D69 /* TripOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC63FDB1C7E56CB00428D69 /* TripOverviewViewController.m */; };
 		5EC63FDE1C7E56CB00428D69 /* TripOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC63FDC1C7E56CB00428D69 /* TripOverviewViewController.xib */; };
+		5ECA3C9B1C814361006008B8 /* SelectedItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECA3C9A1C814361006008B8 /* SelectedItemTableViewCell.m */; };
 		5EE39E791C754251002A2B07 /* HotelDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE39E781C754251002A2B07 /* HotelDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		5EC63FDA1C7E56CB00428D69 /* TripOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripOverviewViewController.h; sourceTree = "<group>"; };
 		5EC63FDB1C7E56CB00428D69 /* TripOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripOverviewViewController.m; sourceTree = "<group>"; };
 		5EC63FDC1C7E56CB00428D69 /* TripOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripOverviewViewController.xib; sourceTree = "<group>"; };
+		5ECA3C991C814361006008B8 /* SelectedItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedItemTableViewCell.h; sourceTree = "<group>"; };
+		5ECA3C9A1C814361006008B8 /* SelectedItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedItemTableViewCell.m; sourceTree = "<group>"; };
 		5EE39E771C754251002A2B07 /* HotelDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelDetailsViewController.h; sourceTree = "<group>"; };
 		5EE39E781C754251002A2B07 /* HotelDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +170,8 @@
 				5EC63FDA1C7E56CB00428D69 /* TripOverviewViewController.h */,
 				5EC63FDB1C7E56CB00428D69 /* TripOverviewViewController.m */,
 				5EC63FDC1C7E56CB00428D69 /* TripOverviewViewController.xib */,
+				5ECA3C991C814361006008B8 /* SelectedItemTableViewCell.h */,
+				5ECA3C9A1C814361006008B8 /* SelectedItemTableViewCell.m */,
 			);
 			path = PushingTableView;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E3B3D791C7D197600ACBB59 /* RestaurantReviewDetailViewController.m in Sources */,
+				5ECA3C9B1C814361006008B8 /* SelectedItemTableViewCell.m in Sources */,
 				5E3B3D761C7D150800ACBB59 /* RestaurantDetailsViewController.m in Sources */,
 				5E7809C31C7C04F0000EFAE2 /* HotelDetailReviewsViewController.m in Sources */,
 				5E387EB61C72B9EA00BB4BC6 /* DetailTableViewController.m in Sources */,
@@ -437,6 +443,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushingTableView/PushingTableView-Prefix.pch";
 				INFOPLIST_FILE = "PushingTableView/PushingTableView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -450,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushingTableView/PushingTableView-Prefix.pch";
 				INFOPLIST_FILE = "PushingTableView/PushingTableView-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

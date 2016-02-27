@@ -16,8 +16,8 @@
 @property (retain) id <passLabel> delegate;
 @property(nonatomic, strong) NSString * name;
 @property(nonatomic, strong) NSMutableArray * selectedFlights;
-@property(nonatomic, strong) NSString * selectedHotels;
-@property(nonatomic, strong) NSString * selectedRestaurants;
+@property(nonatomic, strong) NSMutableArray * selectedHotels;
+@property(nonatomic, strong) NSMutableArray * selectedRestaurants;
 
 @property (nonatomic, weak) IBOutlet UILabel *test_label;
 
