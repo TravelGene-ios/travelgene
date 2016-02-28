@@ -33,17 +33,31 @@
     [super viewDidLoad];
     
     NSMutableString * flightResult = [[NSMutableString alloc] init];
+
+    NSMutableString * hotelResult = [[NSMutableString alloc] init];
+
+    NSMutableString * restaurantResult = [[NSMutableString alloc] init];
     for (NSObject * obj in selectedFlights)
     {
         [flightResult appendString:[obj description]];
         [flightResult appendString:@"  "];
     }
+    for (NSObject * obj in selectedHotels)
+    {
+        [hotelResult appendString:[obj description]];
+        [hotelResult appendString:@"  "];
+    }
+    for (NSObject * obj in selectedRestaurants)
+    {
+        [restaurantResult appendString:[obj description]];
+        [restaurantResult appendString:@"  "];
+    }
 
     // Do any additional setup after loading the view from its nib.
     _test_label.text = name;
     _flight_label.text = flightResult;
-    _hotel_label.text = selectedHotels;
-    _restaurant_label.text = selectedRestaurants;
+    _hotel_label.text = hotelResult;
+    _restaurant_label.text = restaurantResult;
 //    NSLog(@"text: %@", _flight_label.text);
 
 }

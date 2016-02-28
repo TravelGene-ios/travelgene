@@ -15,6 +15,8 @@
 @end
 
 @implementation HotelTableViewController{
+    NSMutableArray * selected_hotels;
+    
     NSMutableArray * hotel_titles;
     NSMutableArray * hotel_addresses;
     NSMutableArray * hotel_imgs;
@@ -57,7 +59,9 @@
 //    NSLog(@"review_list in first element: %@", review_list);
 //    NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 //    NSLog(@"resultDic:%@", resultDic);
-    
+    if(!selected_hotels){
+        selected_hotels = [[NSMutableArray alloc] init];
+    }
     if(!hotel_titles){
         hotel_titles = [[NSMutableArray alloc] init];
     }
@@ -91,7 +95,6 @@
     }
     
 //    hotels = [NSMutableArray arrayWithObjects:@"Westin", @"Sheraton", @"Quarter Club", nil];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -122,16 +125,44 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     static NSString *simpleTableIdentifier = @"HotelCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier forIndexPath:indexPath];
-    
+    SelectedItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     // Configure the cell...
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-    }
-    cell.textLabel.text = [hotel_titles objectAtIndex:indexPath.row];
+    //    if (cell == nil) {
+    //        cell = [[FlightTableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    //    }
+    cell.item_label.text = [hotel_titles objectAtIndex:indexPath.row];
+    cell.likeBtn.tag = indexPath.row; // starts from 0
+    [cell.likeBtn addTarget: self action:@selector(likeBtnClick:) forControlEvents:UIControlEventTouchUpInside];//listener, and run method likeBtnClick
+    // should read from database
+    [cell.likeBtn setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal];
+    cell.likeBtn.titleLabel.text=@"unlike";
+    cell.likeBtn.titleLabel.hidden=YES;
     return cell;
+}
+
+-(void) likeBtnClick:(id) sender{
+    UIButton *senderButton = (UIButton *) sender;
+    NSLog(@"current row=%d", senderButton.tag); // index path row
+    //    UIImage *image = senderButton.currentBackgroundImage;
+    NSLog(@"img: %@", senderButton.titleLabel.text);
+    if([senderButton.titleLabel.text isEqualToString: @"unlike"] ){
+        [senderButton setBackgroundImage:[UIImage imageNamed:@"like.png"] forState:UIControlStateNormal ];
+        senderButton.titleLabel.text=@"like";
+        [selected_hotels addObject:[hotel_titles objectAtIndex:senderButton.tag]];
+        // add the logic of recommendation
+        //        NSString * tmp = @"Panda";
+        //        if(!flights){
+        //            flights = [[NSMutableArray alloc] init];
+        //        }
+        //        [flights addObject:tmp];
+        //        [self.tableView reloadData];
+        
+    }else{
+        [senderButton setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal ];
+        senderButton.titleLabel.text=@"unlike";
+        [selected_hotels removeObject:[hotel_titles objectAtIndex:senderButton.tag]];
+    }
 }
 
 
@@ -195,9 +226,9 @@
         
         UINavigationController *navController = segue.destinationViewController;
         RestaurantTableViewController *dest =(RestaurantTableViewController*) navController.topViewController;
-        dest.selectedHotels = @"westin";
+        dest.selectedHotels = selected_hotels;
         dest.selectedFlights = self.selectedFlights;
-//        NSLog(@"%@", dest.selectedHotels);
+        NSLog(@"%@", dest.selectedHotels);
 //        NSLog(@"%@", dest.selectedFlights);
     }
 }

@@ -1,0 +1,16 @@
+example 1:
+// save the password and username to MySQL database
+// add the following code to your xcode project's method used to trigger the insert DB action
+NSString *password = "password_you_get_from_user_input";
+NSString *username = "username_you_get_from_user_input";
+
+// create a NSString url    
+NSString *urlString = [NSString stringWithFormat:@"http://ec2-52-90-95-189.compute-1.amazonaws.com/adduser2.php?email=%@&password=%@", username, password];
+ 
+// create NSURLSession (just copy exact the code)
+NSURLSession *session = [NSURLSession sharedSession];
+[[session dataTaskWithURL:[NSURL URLWithString:urlString]
+        completionHandler:^(NSData *data,NSURLResponse *response,NSError *error) {}] resume];
+
+// And it's done!
+

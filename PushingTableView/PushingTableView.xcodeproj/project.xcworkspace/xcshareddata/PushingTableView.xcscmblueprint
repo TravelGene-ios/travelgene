@@ -1,0 +1,29 @@
+{
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5BEB856C3E68B3FE835049BD4D983118E4F1EC30" : 0,
+    "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C45D4950-0F72-4632-9E6D-46CBF192ECE7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5BEB856C3E68B3FE835049BD4D983118E4F1EC30" : "..",
+    "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PushingTableView",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PushingTableView.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "argonne.pc.cc.cmu.edu:travelgene\/travelgene.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5BEB856C3E68B3FE835049BD4D983118E4F1EC30"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TravelGene-ios\/travelgene.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AD6B15A757DC177DFFAAC9F0753A1819BFA2FA67"
+    }
+  ]
+}

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectedItemTableViewCell.h"
 
 @interface HotelTableViewController : UITableViewController
 

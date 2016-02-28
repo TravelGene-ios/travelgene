@@ -120,8 +120,6 @@
         senderButton.titleLabel.text=@"like";
 
         [selectedFlights addObject:[flights objectAtIndex:senderButton.tag]];
-
-        
         // add the logic of recommendation
 //        NSString * tmp = @"Panda";
 //        if(!flights){
@@ -133,9 +131,8 @@
     }else{
         [senderButton setBackgroundImage:[UIImage imageNamed:@"unlike.png"] forState:UIControlStateNormal ];
         senderButton.titleLabel.text=@"unlike";
-//        NSLog(@"%@", selectedFlights);
         [selectedFlights removeObject:[flights objectAtIndex:senderButton.tag]];
-//        NSLog(@"%@", selectedFlights);
+
     }
 }
 
