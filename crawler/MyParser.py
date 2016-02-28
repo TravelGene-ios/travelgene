@@ -263,7 +263,7 @@ def parseRestaurant(url):
     get_restaurant_price_range(soup, res)
     res['category'] = 'restaurant'
     # print "title " + res['title']
-    get_restuarant_img(soup, res)
+    get_restaurant_img(soup, res)
     return res
 
 def get_restaurant_openhour(element, res):
@@ -285,16 +285,24 @@ def get_restaurant_address(element,res):
 
 
 
-def get_restuarant_img(element, res):
-    img_url="Unknown"
-    img_div=element.find("div",attrs={"class":"flexible_photos"})
-    # print img_div
-    if img_div:
-        img_div_s=img_div.find("img",attrs={"id":"HERO_PHOTO"})
-        if img_div_s:
-            img_url = img_div_s['src']
-    print img_url
-    res['img_url']=str(img_url)
+def get_restaurant_img(element, res):
+    # analyze js
+    top_div = element.find_all("script")
+    img_url = "Unknown"
+    # in script around this range
+
+
+    for i in range(60, min(80, len(top_div))):
+        part = str(top_div[i])
+        if 'lazyImgs' in part:
+            photo_part = part.split('lazyImgs', 1)[1]
+            if 'HERO_PHOTO' in photo_part:
+                img_url = photo_part.split('HERO_PHOTO', 1)[0].split('{"data":"')[-1].split('","')[0]
+                print img_url
+
+    res['img_url']= img_url
+
+
 
 def get_restaurant_price_range(element, res):
     try:
@@ -418,7 +426,7 @@ if __name__ == "__main__":
     # parseHotel("http://www.tripadvisor.com/Hotel_Review-g53449-d1563869-Reviews-Fairmont_Pittsburgh-Pittsburgh_Pennsylvania")
 
     
-    root_url="http://www.tripadvisor.com/Tourism-g34439-Miami_Beach_Florida-Vacations.html"
+    root_url="http://www.tripadvisor.com/Tourism-g44160-Branson_Missouri-Vacations.html"
     #root_url="http://www.tripadvisor.com/Tourism-g60763-New_York_City_New_York-Vacations.html"
     visited_url={}
     visited_url[root_url]=1
@@ -451,11 +459,11 @@ if __name__ == "__main__":
 
 
 
-    parseAttractionList(urlqueue[2])
+    # parseAttractionList(urlqueue[2])
 
     #
-    # while True:
-    #     if parseRestaurantList(urlqueue[3]):
-    #         break
-    #     print 'try again'
+    while True:
+        if parseRestaurantList(urlqueue[3]):
+            break
+        print 'try again'
 

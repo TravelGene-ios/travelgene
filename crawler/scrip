@@ -1,31 +1,25 @@
 ssh travelgene@argonne.pc.cc.cmu.edu
 
-scp /Users/lubron/Documents/Course/Capstone/travelgene/crawler/MyParser.py travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/
 
 
 // send json from bic to place folder
-scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/New\ York/
-
-
-scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/15/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/Branson/
+scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/10/Restaurant_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/Saint\ Louis/
 
 
 
-
-scp travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/Attractions_out.json /Users/lubron/Documents/Course/Capstone/travelgene/crawler/Washington\ DC/
 
 
 
 
 // send crawler to bic
-scp /Users/lubron/Documents/Course/Capstone/travelgene/crawler/MyParser.py travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/4/
+scp /Users/lubron/Documents/Course/Capstone/travelgene/crawler/MyParser.py travelgene@argonne.pc.cc.cmu.edu:/home/travelgene/crawler/3/
 
 
 
 
 service
 
-ssh -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem  ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com
+ssh -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem  ec2-user@ec2-52-90-95-189.compute-1.amaanswer_5zonaws.com
  
 scp -i /Users/lubron/Documents/Course/Capstone/TravelGene.pem -r /Users/lubron/Documents/Course/Capstone/travelgene/ZXR/service ec2-user@ec2-52-90-95-189.compute-1.amazonaws.com:/home/ec2-user/
 
