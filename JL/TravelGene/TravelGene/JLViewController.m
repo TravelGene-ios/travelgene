@@ -45,8 +45,6 @@
     }
 }
 
-
-
 -(void)viewDidAppear {
     NSLog(@"2");
     if ([FBSDKAccessToken currentAccessToken]) {
@@ -114,11 +112,6 @@
     [defaults setObject:_txtUsername.text forKey:@"username"];
     [defaults setObject:_txtPassword.text forKey:@"password"];
     [defaults setBool:YES forKey:@"registered"];
-    
-    // save the password and username to keychain
-//    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"YourAppLogin" accessGroup:nil];
-//    [keychainItem setObject:_txtPassword.text forKey:@"password"];
-//    [keychainItem setObject:_txtUsername.text forKey:@"username"];
     
     // save the password and username to MySQL database
     NSString *password = [defaults objectForKey:@"password"];
