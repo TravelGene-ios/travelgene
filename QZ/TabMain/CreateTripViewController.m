@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     self.title = @"Create Trip";
     [_destination setDelegate:self];
@@ -52,6 +53,14 @@
     self.returnDate.inputAccessoryView=toolbar;
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *currentString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if ([currentString isEqualToString:@"new"]) {
+        textField.text = @"newyorks";
+        return NO;
+    }
+    return YES;
+}
 
 // when click return
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{

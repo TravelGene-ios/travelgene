@@ -31,7 +31,7 @@
 
     
    // load data from database by query
-    NSString* path=[NSString stringWithFormat:@"%@%@%@", @"http://ec2-52-90-95-189.compute-1.amazonaws.com:5000/mongodb_connection_test?city=", _destination, @"&category=spot&count=2"];
+    NSString* path=[NSString stringWithFormat:@"%@%@%@", @"http://ec2-52-90-95-189.compute-1.amazonaws.com:5000/mongodb_connection_test?city=", _destination, @"&category=spot&count=10"];
     NSLog(path);
     NSURL* url = [NSURL URLWithString:path];
     NSURLRequest* request = [NSURLRequest requestWithURL:url];
